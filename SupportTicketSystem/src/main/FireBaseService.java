@@ -15,7 +15,7 @@ public class FireBaseService {
     FirebaseDatabase db;
 
     public FireBaseService() throws IOException {
-        File file = new File(System.getProperty("user.dir") + "\\key\\fir-testproject-20cf0-firebase-adminsdk-raq32-9ffeb9ca8c.json");               
+        File file = new File("DatabaseKey.json");               
      
 
         FileInputStream serviceAccount =
@@ -23,7 +23,7 @@ public class FireBaseService {
 
         FirebaseOptions options = new FirebaseOptions.Builder()
         		.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-        		.setDatabaseUrl("https://fir-testproject-20cf0-default-rtdb.firebaseio.com")
+        		.setDatabaseUrl("https://support-ticket-system-b912c-default-rtdb.firebaseio.com/")
         		.build();
 
 		FirebaseApp.initializeApp(options);
