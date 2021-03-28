@@ -17,7 +17,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>14</release>
+          <release>11</release>
+        <compilerArgs>--enable-preview</compilerArgs>
         </configuration>
       </plugin>
     </plugins>
