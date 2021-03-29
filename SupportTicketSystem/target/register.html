@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G9 Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body style="background-color:#ffffff;" onload="init()">
+
+        <div class="container">
+            <a href="index.html"><img src="images/CSU_Logo1.png" style="padding-top: 15px;"width="9%" height="9%" alt="G9 Support Ticket System"/></a>
+
+            <div class="row">
+                <div class="col-sm-6">
+
+
+                </div>
+                <div class="jumbotron col-sm-6" style="background-color:lavender;">
+                    <div>
+                        <h1>Register</h1>
+                    </div>
+
+                        <form id="registrationForm" autocomplete="on">
+                            <div class="form-group">
+                                <label for="usrRegister">Full Name:</label>
+                                <input type="text" class="form-control" id="usrRegister"  autocomplete="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usrNameRegister">Username:</label>
+                                <input type="text" class="form-control" id="usrNameRegister" autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control" id="email"  autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwdRegister">Password:</label>
+                                <input type="password" class="form-control" id="pwdRegister">
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger" onclick="register()">Register</button>
+                            </div><br>
+
+                            <div><a href="index.html">Click here to Login</a></div><br>
+
+                            <div id="alert">
+
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "",
+                authDomain: "",
+                databaseURL: "",
+                projectId: "",
+                storageBucket: "",
+                messagingSenderId: ""
+            };
+            firebase.initializeApp(config);
+        </script>
+    <script src="http://chancejs.com/chance.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
