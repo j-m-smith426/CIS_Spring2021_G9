@@ -1,5 +1,6 @@
 package main;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Ticket {
 	private String requesterID; 
@@ -9,9 +10,9 @@ public class Ticket {
 	private String description;
 	private int priority;
 	private Date dueDate;
-	//history[] history;
-	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority,
-			Date dueDate) {
+	ArrayList<Integer> history = new ArrayList<Integer>();
+
+	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority, Date dueDate) {
 		super();
 		this.requesterID = requesterID;
 		this.ticketID = ticketID;
@@ -21,11 +22,13 @@ public class Ticket {
 		this.priority = priority;
 		this.dueDate = dueDate;
 	}
-	public int getPriority() {
-		return priority;
+	public void getPriority() {
+    		return priority;
+		
 	}
 	public void setPriority(int priority) {
 		this.priority = priority;
+    		setHistory(priority);
 	}
 	public Date getDueDate() {
 		return dueDate;
@@ -48,7 +51,11 @@ public class Ticket {
 	public String getDescription() {
 		return description;
 	}
-	
-	
+  	public ArrayList getHistory(){
+    		return history;
+  }
+  	public void setHistory(int priority){
+    		history.add(priority);
+  }
 
 }
