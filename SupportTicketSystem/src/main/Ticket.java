@@ -22,7 +22,7 @@ public class Ticket {
 		this.priority = priority;
 		this.dueDate = dueDate;
 	}
-	public void getPriority() {
+	public int getPriority() {
     		return priority;
 		
 	}
