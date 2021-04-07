@@ -34,7 +34,7 @@ class User {
     if((gate1) && (gate2)){
       //hashUserAccount();
     String selectSQL = "INSERT INTO USER (?,?,?,?) ";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
+    PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
     search.setString(2, this.password);
     search.setString(3, this.email);
@@ -48,7 +48,7 @@ class User {
 
   public boolean doesUserNameExist(){
     String selectSQL = "SELECT * FROM USER WHERE USERNAME = ?";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
+    PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
     ResultSet rs = search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
@@ -66,7 +66,7 @@ class User {
 
   public boolean IsEmailUsed(){
     String selectSQL = "SELECT * FROM USER WHERE EMAIL = ?";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
+    PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.email);
     ResultSet rs = search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
