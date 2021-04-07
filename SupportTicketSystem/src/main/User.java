@@ -12,6 +12,7 @@ public class User {
   private String email;
   private String password;
   private String typeOfUser;
+  private Connection Conn = new ConnectToDB().getConnect();
 
   public User(String username, String email, String password){
     this.username = username;
@@ -34,13 +35,16 @@ public class User {
 
     if((gate1) && (gate2)){
       //hashUserAccount();
+    try {
     String selectSQL = "INSERT INTO USER (?,?,?,?); ";
     PreparedStatement insert = Conn.prepareStatement(selectSQL);
-    search.setString(1, this.username);
-    search.setString(2, this.password);
-    search.setString(3, this.email);
-    search.setString(4, this.typeOfUser);
+    insert.setString(1, this.username);
+    insert.setString(2, this.password);
+    insert.setString(3, this.email);
+    insert.setString(4, this.typeOfUser);
     ResultSet rs = insert.executeQuery();
+	}catch(SQLException e){
+		System.out.println("Sql Error");
     }
 
 
@@ -48,6 +52,7 @@ public class User {
 
 
   public boolean doesUserNameExist(){
+	try{
     String selectSQL = "SELECT * FROM USER WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
@@ -62,10 +67,14 @@ public class User {
     }else{
       return true;
     }
+	}catch(SQLException e){
+		System.out.println("Sql Error");
+    }
 
   }
 
   public boolean IsEmailUsed(){
+	try {
     String selectSQL = "SELECT * FROM USER WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.email);
@@ -80,6 +89,9 @@ public class User {
     }else{
       return true;
     }
+		}catch(SQLException e){
+		System.out.println("Sql Error");
+	}
   }
   
   public String getUserName(){
