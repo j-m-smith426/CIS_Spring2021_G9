@@ -2,10 +2,7 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.PreparedStatement;
 import java.util.Scanner;
-import java.util.ArrayList;
-
 class User {
   private String username;
   private String email;
@@ -33,13 +30,7 @@ class User {
 
     if((gate1) && (gate2)){
       //hashUserAccount();
-    String selectSQL = "INSERT INTO USER (?,?,?,?) ";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
-    search.setString(1, this.username);
-    search.setString(2, this.password);
-    search.setString(3, this.email);
-    search.setString(4, this.typeOfUser);
-
+      // add account to DB
     }
 
 
@@ -47,38 +38,23 @@ class User {
 
 
   public boolean doesUserNameExist(){
-    String selectSQL = "SELECT * FROM USER WHERE USERNAME = ?";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
-    search.setString(1, this.username);
-    ResultSet rs = search.executeQuery();
-    ArrayList<String> list = new ArrayList<String>();
-    while(rs.next()){
-      String name = rs.getString("username");
-      list.add(name);
-    }
-    if(list.get(0) == null){
-      return false;
-    }else{
+    //for(int i = 0; )
+    if(this.username.equals(userNameInDB)){
       return true;
+    }else{
+      return false;
     }
 
   }
 
   public boolean IsEmailUsed(){
-    String selectSQL = "SELECT * FROM USER WHERE EMAIL = ?";
-    PreparedStatement search = dbConnection.prepareStatement(selectSQL);
-    search.setString(1, this.email);
-    ResultSet rs = search.executeQuery();
-    ArrayList<String> list = new ArrayList<String>();
-    while(rs.next()){
-      String name = rs.getString("email");
-      list.add(name);
-    }
-    if(list.get(0) == null){
-      return false;
-    }else{
+    //for(int i = 0; )
+    if(this.email.equals(emailInDB)){
       return true;
+    }else{
+      return false;
     }
+
   }
   
   public String getUserName(){
