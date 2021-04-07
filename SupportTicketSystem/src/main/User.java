@@ -34,9 +34,7 @@ public class User {
 
     if((gate1) && (gate2)){
       //hashUserAccount();
-    try {
     String selectSQL = "INSERT INTO USER (?,?,?,?); ";
-<<<<<<< HEAD
     PreparedStatement insert;
 	try {
 		insert = Conn.prepareStatement(selectSQL);
@@ -50,28 +48,13 @@ public class User {
 		e.printStackTrace();
 	}
     
-=======
-    PreparedStatement insert = Conn.prepareStatement(selectSQL);
-    insert.setString(1, this.username);
-    insert.setString(2, this.password);
-    insert.setString(3, this.email);
-    insert.setString(4, this.typeOfUser);
-    ResultSet rs = insert.executeQuery();
-	}catch(SQLException e){
-		System.out.println("Sql Error");
->>>>>>> branch 'main' of https://github.com/j-m-smith426/CIS_Spring2021_G9.git
     }
 
 
   }
 
 
-<<<<<<< HEAD
   public boolean doesUserNameExist() throws SQLException{
-=======
-  public boolean doesUserNameExist(){
-	try{
->>>>>>> branch 'main' of https://github.com/j-m-smith426/CIS_Spring2021_G9.git
     String selectSQL = "SELECT * FROM USER WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
@@ -86,18 +69,10 @@ public class User {
     }else{
       return true;
     }
-	}catch(SQLException e){
-		System.out.println("Sql Error");
-    }
 
   }
 
-<<<<<<< HEAD
   public boolean IsEmailUsed() throws SQLException{
-=======
-  public boolean IsEmailUsed(){
-	try {
->>>>>>> branch 'main' of https://github.com/j-m-smith426/CIS_Spring2021_G9.git
     String selectSQL = "SELECT * FROM USER WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.email);
@@ -112,9 +87,6 @@ public class User {
     }else{
       return true;
     }
-		}catch(SQLException e){
-		System.out.println("Sql Error");
-	}
   }
   
   public String getUserName(){
