@@ -34,15 +34,15 @@ public class User {
 
     if((gate1) && (gate2)){
       //hashUserAccount();
-    String selectSQL = "INSERT INTO Users (?,?,?,?); ";
+    String selectSQL = "INSERT INTO Users Values(?,?,?,?); ";
     PreparedStatement insert;
 	try {
-		insert = Conn.prepareStatement(selectSQL);
-		insert.setString(1, this.username);
-	    insert.setString(2, this.password);
-	    insert.setString(3, this.email);
-	    insert.setString(4, this.typeOfUser);
-	    ResultSet rs = insert.executeQuery();
+	insert = Conn.prepareStatement(selectSQL);
+	insert.setString(1, this.username);
+	insert.setString(2, this.password);
+	insert.setString(3, this.email);
+	insert.setString(4, this.typeOfUser);
+	insert.executeQuery();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -58,7 +58,7 @@ public class User {
     String selectSQL = "SELECT * FROM Users WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
-    ResultSet rs = search.executeQuery();
+    search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
       String name = rs.getString("username");
@@ -76,7 +76,7 @@ public class User {
     String selectSQL = "SELECT * FROM Users WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.email);
-    ResultSet rs = search.executeQuery();
+    search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
       String name = rs.getString("email");
