@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectToDB {
 	Connection Conn;
 	
-	public ConnectToDB(Connection conn) {
+	public ConnectToDB() {
 	try {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 	} catch (SQLException e1) {
@@ -13,9 +13,9 @@ public class ConnectToDB {
 		e1.printStackTrace();
 	}
 	
-	String dbURL = "jdbc:sqlserver://192.168.0.96:1433;databaseName=SupportTicketDB;";
+	//String dbURL = "jdbc:sqlserver://192.168.0.96:1433;databaseName=SupportTicketDB;";
 	//local
-	//	String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=SupportTicketDB;integratedSecurity=true;";
+		String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=SupportTicketDB;integratedSecurity=true;";
 	String user = "pass";
 	String pass = "pass";
 	conn = null;
