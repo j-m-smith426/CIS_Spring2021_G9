@@ -2,7 +2,6 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.PreparedStatement;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.sql.*;
@@ -12,8 +11,9 @@ public class User {
   private String email;
   private String password;
   private String typeOfUser;
+  private Connection Conn = new ConnectToDB().getConnect();
 
-  public User(String username, String email, String password){
+  public User(String username, String email, String password) throws SQLException{
     this.username = username;
     this.email = email;
     this.password = password;
@@ -35,19 +35,26 @@ public class User {
     if((gate1) && (gate2)){
       //hashUserAccount();
     String selectSQL = "INSERT INTO USER (?,?,?,?); ";
-    PreparedStatement insert = Conn.prepareStatement(selectSQL);
-    search.setString(1, this.username);
-    search.setString(2, this.password);
-    search.setString(3, this.email);
-    search.setString(4, this.typeOfUser);
-    ResultSet rs = insert.executeQuery();
+    PreparedStatement insert;
+	try {
+		insert = Conn.prepareStatement(selectSQL);
+		insert.setString(1, this.username);
+	    insert.setString(2, this.password);
+	    insert.setString(3, this.email);
+	    insert.setString(4, this.typeOfUser);
+	    ResultSet rs = insert.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    
     }
 
 
   }
 
 
-  public boolean doesUserNameExist(){
+  public boolean doesUserNameExist() throws SQLException{
     String selectSQL = "SELECT * FROM USER WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
@@ -65,7 +72,7 @@ public class User {
 
   }
 
-  public boolean IsEmailUsed(){
+  public boolean IsEmailUsed() throws SQLException{
     String selectSQL = "SELECT * FROM USER WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, this.email);
