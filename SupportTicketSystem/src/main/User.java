@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.sql.*;
 
-class User {
+public class User {
   private String username;
   private String email;
   private String password;
