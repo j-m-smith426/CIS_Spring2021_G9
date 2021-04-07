@@ -34,12 +34,12 @@ class User {
     if((gate1) && (gate2)){
       //hashUserAccount();
     String selectSQL = "INSERT INTO USER (?,?,?,?) ";
-    PreparedStatement search = Conn.prepareStatement(selectSQL);
+    PreparedStatement insert = Conn.prepareStatement(selectSQL);
     search.setString(1, this.username);
     search.setString(2, this.password);
     search.setString(3, this.email);
     search.setString(4, this.typeOfUser);
-
+    ResultSet rs = insert.executeQuery();
     }
 
 
