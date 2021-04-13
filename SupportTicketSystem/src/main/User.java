@@ -15,6 +15,7 @@ public class User {
   private String password;
   private String typeOfUser;
   private Connection Conn = new ConnectToDB().getConnect();
+  private String key = "Bar12345Bar12345";
 
   public User(String username, String email, String password) throws SQLException{
     this.username = username;
@@ -62,7 +63,6 @@ public class User {
  public String hashUserAccount(String input){
    try{
     String text = input;
-    String key = "Bar12345Bar12345";
     Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
     Cipher cipher = Cipher.getInstance("AES");
     cipher.init(Cipher.ENCRYPT_MODE, aesKey);
@@ -78,7 +78,6 @@ public class User {
  public String decryptUserAccount(String input){
    try{
     String text = input;
-    String key = "Bar12345Bar12345";
     Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
     Cipher cipher = Cipher.getInstance("AES");
     cipher.init(Cipher.DECRYPT_MODE, aesKey);
