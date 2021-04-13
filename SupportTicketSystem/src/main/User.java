@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.sql.*;
+import java.security.Key;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class User {
   private String username;
@@ -33,7 +36,10 @@ public class User {
     }
 
     if((gate1) && (gate2)){
-      //hashUserAccount();
+    this.username = hashUserAccounts(this.username);
+    this.password = hashUserAccounts(this.password);
+    this.email = hashUserAccounts(this.email);
+    this.typeOfUser = hashUserAccounts(this.typeOfUser);
     String selectSQL = "INSERT INTO Users Values(?,?,?,?); ";
     PreparedStatement insert;
 	try {
@@ -53,6 +59,37 @@ public class User {
 
   }
 
+ public String hashUserAccount(String input){
+   try{
+    String text = input;
+    String key = "Bar12345Bar12345";
+    Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
+    Cipher cipher = Cipher.getInstance("AES");
+    cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+    byte[] encrypted = cipher.doFinal(text.getBytes());
+    String encryptedString = (new String(encrypted));
+    return encryptedString;
+    }catch(Exception e){
+	System.out.println("Hashing Error");
+	}  
+
+}
+
+ public String decryptUserAccount(String input){
+   try{
+    String text = input;
+    String key = "Bar12345Bar12345";
+    Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
+    Cipher cipher = Cipher.getInstance("AES");
+    cipher.init(Cipher.DECRYPT_MODE, aesKey);
+    String decrypted = new String(cipher.doFinal(encrypted));
+    retrun decrypted;
+  }catch(Exception e){
+
+    System.out.println("Decryption Error");
+   }   
+
+ }
 
   public boolean doesUserNameExist() throws SQLException{
     String selectSQL = "SELECT * FROM Users WHERE USERNAME = ?;";
