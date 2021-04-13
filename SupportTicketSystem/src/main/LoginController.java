@@ -70,6 +70,8 @@ public class LoginController implements Initializable {
             pst.setString(2, txt_password.getText());
             pst.setString(3, type.getValue().toString());
             rs = pst.executeQuery();
+            
+            User;
 
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Username and password is correct");
@@ -101,6 +103,8 @@ public class LoginController implements Initializable {
             pst.setString(3, type.getValue().toString());
             pst.setString(4, email_up.getText());
             pst.execute();
+            
+            User;
 
             JOptionPane.showMessageDialog(null, "saved");
 
