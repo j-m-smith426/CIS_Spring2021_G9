@@ -51,7 +51,7 @@ public class Ticket {
 
 
 	public int usedTicketID(int ticketID){
-		String selectSQL = "SELECT * FROM Tickets WHERE TicketID = ?;";
+		String selectSQL = "SELECT * FROM Ticket WHERE TicketID = ?;";
 		PreparedStatement = search = Conn.preparedStatement(selectSQL);
 		search.setString(1,ticketID);
 		search.executeQuery();
