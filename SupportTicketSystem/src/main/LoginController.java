@@ -61,8 +61,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Login (ActionEvent event) throws Exception{
-        conn = ConnectToDB.ConnectDb();
-        String sql = "Select * from users where username = ? and password = ? and tye = ?";
+        conn = ConnectToDB.ConnectToDB();
+        String sql = "Select * from users where username = ? and password = ? and type = ?";
 
         try{
             pst = conn.prepareStatement(sql);
@@ -91,7 +91,7 @@ public class LoginController implements Initializable {
 
     public void add_users(ActionEvent event){
 
-        conn = mysqlconnect.ConnectDb();
+        conn = ConnectToDB.ConnectToDB();
         String sql = "insert into users (username,password,type,email) VALUES (?,?,?,?)";
 
         try{
