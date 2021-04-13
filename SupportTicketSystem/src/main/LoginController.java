@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Login (ActionEvent event) throws Exception{
-        conn = ConnectToDB.ConnectToDB();
+        conn = ConnectToDB.getConnect();
         String sql = "Select * from users where username = ? and password = ? and type = ?";
 
         try{
@@ -93,7 +93,7 @@ public class LoginController implements Initializable {
 
     public void add_users(ActionEvent event){
 
-        conn = ConnectToDB.ConnectToDB();
+        conn = ConnectToDB.getConnect();
         String sql = "insert into users (username,password,type,email) VALUES (?,?,?,?)";
 
         try{
