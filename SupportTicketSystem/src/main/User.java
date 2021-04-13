@@ -94,7 +94,7 @@ public class User {
   public boolean doesUserNameExist() throws SQLException{
     String selectSQL = "SELECT * FROM Users WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
-    search.setString(1, this.username);
+    search.setString(1, hashUserAccount(this.username));
     search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
@@ -112,7 +112,7 @@ public class User {
   public boolean IsEmailUsed() throws SQLException{
     String selectSQL = "SELECT * FROM Users WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
-    search.setString(1, this.email);
+    search.setString(1, hashUserAccount(this.email));
     search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
