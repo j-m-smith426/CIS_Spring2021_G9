@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+   <children>
+      <HBox layoutY="14.0" prefHeight="71.0" prefWidth="500.0" style="-fx-border-color: #0fea88; -fx-border-width: 3;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#LoginpaneShow" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #0fea88;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#SignuppaneShow" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #4e5a51;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="pane_login" layoutY="94.0" prefHeight="277.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="txt_username" layoutX="25.0" layoutY="87.0" prefHeight="40.0" prefWidth="450.0" promptText="Username" />
+            <PasswordField fx:id="txt_password" layoutX="25.0" layoutY="150.0" prefHeight="40.0" prefWidth="450.0" promptText="Password" />
+            <ComboBox fx:id="type" layoutX="289.0" layoutY="26.0" prefHeight="34.0" prefWidth="186.0" promptText="Chose Type" />
+            <Button fx:id="btn_login" layoutX="100.0" layoutY="206.0" mnemonicParsing="false" onAction="#Login" prefHeight="46.0" prefWidth="301.0" style="-fx-background-color: #0fea88;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="26.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_signup" layoutY="123.0" prefHeight="277.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="txt_username_up" layoutX="277.0" layoutY="87.0" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
+            <TextField fx:id="email_up" layoutX="277.0" layoutY="162.0" prefHeight="30.0" prefWidth="200.0" promptText="Email" />
+            <ComboBox fx:id="type_up" layoutX="277.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0" promptText="Chose Type" />
+            <Button layoutX="22.0" layoutY="221.0" mnemonicParsing="false" onAction="#add_users" prefHeight="40.0" prefWidth="460.0" style="-fx-background-color: #0fea88;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="23.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CSU_Logo1.png" />
+               </image>
+            </ImageView>
+            <PasswordField layoutX="277.0" layoutY="124.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
