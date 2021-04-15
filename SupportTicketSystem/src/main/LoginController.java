@@ -93,24 +93,7 @@ public class LoginController implements Initializable {
 
     public void add_users(ActionEvent event){
 
-        conn = ConnectToDB.getConnect();
-        String sql = "insert into users (username,password,type,email) VALUES (?,?,?,?)";
-
-        try{
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, txt_username_up.getText());
-            pst.setString(2, txt_password_up.getText());
-            pst.setString(3, type.getValue().toString());
-            pst.setString(4, email_up.getText());
-            pst.execute();
-            
-            User;
-
-            JOptionPane.showMessageDialog(null, "saved");
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+	User user = new User(txt_username.getText(), txt_email.getText(), txt_password.getText());
 
     }
 
