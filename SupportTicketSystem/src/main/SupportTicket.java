@@ -12,6 +12,7 @@ public class SupportTicket extends Application {
 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception{
+	    	
 	        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 	        primaryStage.setTitle("G9 Support Ticket System");
 	        primaryStage.setScene(new Scene(root, 500, 400));

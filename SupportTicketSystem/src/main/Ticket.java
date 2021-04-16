@@ -16,7 +16,8 @@ public class Ticket {
 	private int priority;
 	private DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 	private java.sql.Date dueDate;
-	private Connection Conn = ConnectToDB.getConnect();
+	ConnectToDB connection = new ConnectToDB();
+	Connection Conn = connection.getConnect();
 	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
 	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority, String dueDate) throws SQLException {

@@ -14,7 +14,8 @@ public class User {
   private String email;
   private String password;
   private String typeOfUser;
-  Connection Conn = ConnectToDB.getConnect();
+  ConnectToDB connection = new ConnectToDB();
+  Connection Conn = connection.getConnect();
   private String key = "Bar12345Bar12345";
 
   public User(String username, String email, String password, String typeOfUser) throws SQLException{

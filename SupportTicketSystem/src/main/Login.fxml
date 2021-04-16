@@ -13,7 +13,7 @@
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
- fx:controller="sample.LoginController">
+ fx:controller="main.LoginController">
    <children>
       <HBox layoutY="14.0" prefHeight="71.0" prefWidth="500.0" style="-fx-border-color: #0fea88; -fx-border-width: 3;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -62,7 +62,7 @@
                   <Image url="@CSU_Logo1.png" />
                </image>
             </ImageView>
-            <PasswordField layoutX="277.0" layoutY="124.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
+            <PasswordField fx:id="txt_password_up" layoutX="277.0" layoutY="124.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
          </children>
       </AnchorPane>
    </children>

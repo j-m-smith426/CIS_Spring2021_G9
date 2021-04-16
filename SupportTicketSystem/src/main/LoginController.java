@@ -47,7 +47,8 @@ public class LoginController implements Initializable {
     @FXML
     private ComboBox type_up;
 
-    private Connection conn =  ConnectToDB.getConnect();
+    ConnectToDB connection = new ConnectToDB();
+    Connection conn = connection.getConnect();
     ResultSet rs = null;
     PreparedStatement pst = null;
 

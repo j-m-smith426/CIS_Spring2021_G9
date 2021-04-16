@@ -3,7 +3,8 @@ package main;
 import java.sql.*;
 
 public class ConnectToDB {
-	static Connection Conn;
+	static Connection Conn; 
+	
 	
 	public ConnectToDB() {
 	try {
@@ -31,6 +32,7 @@ public class ConnectToDB {
 	}
 	}
 	public static Connection getConnect() {
+		
 		return Conn;
 	}
 }
