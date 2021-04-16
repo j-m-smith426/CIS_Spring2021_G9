@@ -14,14 +14,16 @@ public class User {
   private String email;
   private String password;
   private String typeOfUser;
-  private Connection Conn = new ConnectToDB().getConnect();
+  Connection Conn = ConnectToDB.getConnect();
   private String key = "Bar12345Bar12345";
 
-  public User(String username, String email, String password) throws SQLException{
+  public User(String username, String email, String password, String typeOfUser) throws SQLException{
     this.username = username;
     this.email = email;
     this.password = password;
-    typeOfUser = "User";
+    this.typeOfUser = typeOfUser;
+  }
+  public void addUserToDB() throws SQLException {
     boolean gate1 = false;
     boolean gate2 = false;
     
@@ -37,10 +39,10 @@ public class User {
     }
 
     if((gate1) && (gate2)){
-    this.username = hashUserAccounts(this.username);
-    this.password = hashUserAccounts(this.password);
-    this.email = hashUserAccounts(this.email);
-    this.typeOfUser = hashUserAccounts(this.typeOfUser);
+    this.username = hashUserAccount(this.username);
+    this.password = hashUserAccount(this.password);
+    this.email = hashUserAccount(this.email);
+    this.typeOfUser = hashUserAccount(this.typeOfUser);
     String selectSQL = "INSERT INTO Users Values(?,?,?,?); ";
     PreparedStatement insert;
 	try {
@@ -61,40 +63,43 @@ public class User {
   }
 
  public String hashUserAccount(String input){
-   try{
+	 String encryptedString = input;
+	 try{
     String text = input;
     Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
     Cipher cipher = Cipher.getInstance("AES");
     cipher.init(Cipher.ENCRYPT_MODE, aesKey);
     byte[] encrypted = cipher.doFinal(text.getBytes());
-    String encryptedString = (new String(encrypted));
-    return encryptedString;
+    encryptedString = (new String(encrypted));
+    
     }catch(Exception e){
 	System.out.println("Hashing Error");
 	}  
-
+	 return encryptedString;
 }
 
  public String decryptUserAccount(String input){
-   try{
+	 String decrypted = input;
+	 try{
     String text = input;
     Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
     Cipher cipher = Cipher.getInstance("AES");
     cipher.init(Cipher.DECRYPT_MODE, aesKey);
-    String decrypted = new String(cipher.doFinal(encrypted));
-    retrun decrypted;
+    byte[] encrypted = cipher.doFinal(input.getBytes());
+     decrypted = new String(cipher.doFinal(encrypted));
+    
   }catch(Exception e){
 
     System.out.println("Decryption Error");
    }   
-
+	 return decrypted;
  }
 
   public boolean doesUserNameExist() throws SQLException{
     String selectSQL = "SELECT * FROM Users WHERE USERNAME = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, hashUserAccount(this.username));
-    search.executeQuery();
+    ResultSet rs = search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
       String name = rs.getString("username");
@@ -112,7 +117,7 @@ public class User {
     String selectSQL = "SELECT * FROM Users WHERE EMAIL = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
     search.setString(1, hashUserAccount(this.email));
-    search.executeQuery();
+    ResultSet rs = search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
       String name = rs.getString("email");

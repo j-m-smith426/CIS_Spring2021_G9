@@ -1,5 +1,9 @@
 package main;
 import java.util.Date;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,52 +14,60 @@ public class Ticket {
 	private int category;
 	private String description;
 	private int priority;
-	private Date dueDate;
-	ArrayList<Integer> history = new ArrayList<Integer>();
+	private DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+	private java.sql.Date dueDate;
+	private Connection Conn = ConnectToDB.getConnect();
+	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
-	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority, Date dueDate) {
+	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority, String dueDate) throws SQLException {
 		super();
 		this.requesterID = requesterID;
 		this.title = title;
 		this.category = category;
 		this.description = description;
 		this.priority = priority;
-		this.dueDate = dueDate;
+		try {
+			this.dueDate = new java.sql.Date(df.parse(dueDate).getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.ticketID = rand.nextInt(10000) + 1;
 		while(this.ticketID == usedTicketID(this.ticketID)){
-			this.ticketID = rand.NextInt(10000) + 1;
+			this.ticketID = rand.nextInt(10000) + 1;
 		}
 		
-		addTicketToDB(this.ticketID, this.title, this.requesterID, this.category, this.description, this.priority, this.dueDate);
+		
 
 	}
 
 
- 	public void addTicketToDB(int ticketID, String title, String requesterID, int category, String description, int priority, Date dueDate){
+ 	public void addTicketToDB(){
 	String selectSQL = "INSERT INTO Tickets Values(?,?,?,?,?,?,?);";
 	PreparedStatement insert;
+	
 	try{
 		insert = Conn.prepareStatement(selectSQL);
-		insert.setString(1, ticketID);
-		insert.setString(2, title);
-		insert.setString(3, requesterID);
-		insert.setString(4, category);
-		insert.setString(5, description);
-		insert.setString(6, priority);
-		insert.setString(7, dueDate);
+		insert.setInt(1, this.ticketID);
+		insert.setString(2, this.title);
+		insert.setString(3, this.requesterID);
+		insert.setInt(4, this.category);
+		insert.setString(5, this.description);
+		insert.setInt(6, this.priority);
+		insert.setDate(7, this.dueDate);
 		insert.executeQuery();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 
-
-	public int usedTicketID(int ticketID){
+ 	}
+	public int usedTicketID(int ticketID) throws SQLException{
 		String selectSQL = "SELECT * FROM Ticket WHERE TicketID = ?;";
-		PreparedStatement = search = Conn.preparedStatement(selectSQL);
-		search.setString(1,ticketID);
-		search.executeQuery();
-		LarrayList<Integer> intList = new ArrayList<Integer>();
+		PreparedStatement search = Conn.prepareStatement(selectSQL);
+		search.setInt(1,this.ticketID);
+		ResultSet rs = search.executeQuery();
+		ArrayList<Integer> intList = new ArrayList<Integer>();
 		while(rs.next()){
 			int name = rs.getInt("TicketID");
 			intList.add(name);
@@ -81,8 +93,8 @@ public class Ticket {
 	public Date getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
+	public void setDueDate(String dueDate) throws ParseException {
+		this.dueDate = new java.sql.Date(df.parse(dueDate).getTime());
 	}
 	public String getRequesterID() {
 		return requesterID;

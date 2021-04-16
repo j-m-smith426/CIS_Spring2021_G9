@@ -3,7 +3,7 @@ package main;
 import java.sql.*;
 
 public class ConnectToDB {
-	Connection Conn;
+	static Connection Conn;
 	
 	public ConnectToDB() {
 	try {
@@ -18,7 +18,7 @@ public class ConnectToDB {
 		String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=SupportTicketDB;integratedSecurity=true;";
 	String user = "pass";
 	String pass = "pass";
-	conn = null;
+	Connection conn = null;
 	try {
 		conn = DriverManager.getConnection(dbURL, user, pass);
 	} catch (SQLException e) {
@@ -30,7 +30,7 @@ public class ConnectToDB {
 	    Conn = conn;
 	}
 	}
-	public Connection getConnect() {
+	public static Connection getConnect() {
 		return Conn;
 	}
 }

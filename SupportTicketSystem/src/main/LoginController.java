@@ -19,7 +19,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+
 
 public class LoginController implements Initializable {
 
@@ -44,7 +47,7 @@ public class LoginController implements Initializable {
     @FXML
     private ComboBox type_up;
 
-    Connection conn = null;
+    private Connection conn =  ConnectToDB.getConnect();
     ResultSet rs = null;
     PreparedStatement pst = null;
 
@@ -61,17 +64,17 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Login (ActionEvent event) throws Exception{
-        conn = ConnectToDB.getConnect();
+        
         String sql = "Select * from users where username = ? and password = ? and type = ?";
-
+        User userA = new User(txt_username.getText(),txt_username.getText(),txt_password.getText(),type.getValue().toString());
         try{
             pst = conn.prepareStatement(sql);
-            pst.setString(1, txt_username.getText());
-            pst.setString(2, txt_password.getText());
-            pst.setString(3, type.getValue().toString());
+            pst.setString(1, userA.hashUserAccount(userA.getUserName()));
+            pst.setString(2, userA.hashUserAccount(userA.getPassword()));
+            pst.setString(3, userA.hashUserAccount(userA.getTypeOfUser()));
             rs = pst.executeQuery();
             
-            User;
+           
 
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Username and password is correct");
@@ -93,7 +96,13 @@ public class LoginController implements Initializable {
 
     public void add_users(ActionEvent event){
 
-	User user = new User(txt_username.getText(), txt_email.getText(), txt_password.getText());
+	try {
+		User user = new User(txt_username_up.getText(), email_up.getText(), txt_password_up.getText(), type_up.getValue().toString());
+		user.addUserToDB();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
     }
 
