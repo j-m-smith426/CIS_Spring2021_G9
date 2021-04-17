@@ -42,7 +42,6 @@ public class User {
     if((gate1) && (gate2)){
     this.username = hashUserAccount(this.username);
     this.password = hashUserAccount(this.password);
-    this.email = hashUserAccount(this.email);
     this.typeOfUser = hashUserAccount(this.typeOfUser);
     String selectSQL = "INSERT INTO Users Values(?,?,?,?); ";
     PreparedStatement insert;
