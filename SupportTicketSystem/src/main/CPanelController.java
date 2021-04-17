@@ -94,13 +94,13 @@ public class CPanelController implements Initializable {
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
 
-        try{
+     /*   try{
         //add ticket
         }catch (){
 
         //SQLException
         }
-
+	*/
 
 
     }
