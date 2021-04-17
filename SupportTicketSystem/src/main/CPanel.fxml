@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CPanelController">
+   <children>
+      <AnchorPane layoutX="138.0" layoutY="-15.0" prefHeight="100.0" prefWidth="500.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="273.0" layoutY="26.0" mnemonicParsing="false" onAction="#TicketpaneShow" style="-fx-background-color: red;" text="Create a Ticket" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+            <Button layoutX="37.0" layoutY="26.0" mnemonicParsing="false" onAction="#HomepaneShow" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: red;" text="Home" textFill="WHITE" AnchorPane.leftAnchor="40.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Homepane" layoutX="158.0" layoutY="200.0" prefHeight="290.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TableView fx:id="table" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="col_id" prefWidth="109.0" text="Ticket ID" />
+                <TableColumn fx:id="col_Reqid" prefWidth="123.0" text="Requester ID" />
+                  <TableColumn fx:id="col_date" text="Due Date" />
+                  <TableColumn fx:id="col_desc" prefWidth="167.0" text="Description" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Ticketpane" layoutY="110.0" prefHeight="290.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="submitTicket" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Submit Ticket" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txt_title" layoutX="100.0" layoutY="14.0" prefWidth="300.0" promptText="Title" />
+            <TextField fx:id="txt_date" layoutX="100.0" layoutY="53.0" prefWidth="300.0" promptText="Due Date (MM-dd-yyyy)" />
+            <TextField fx:id="txt_description" alignment="TOP_LEFT" layoutX="100.0" layoutY="89.0" prefHeight="64.0" prefWidth="300.0" promptText="Description" />
+            <ComboBox fx:id="category" layoutX="175.0" layoutY="162.0" prefWidth="150.0" promptText="Category" />
+            <ComboBox fx:id="priority" layoutX="176.0" layoutY="201.0" prefWidth="150.0" promptText="Priority" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
