@@ -66,13 +66,13 @@ public class LoginController implements Initializable {
     @FXML
     private void Login (ActionEvent event) throws Exception{
         
-        String sql = "Select * from users where username = ? and password = ? and type = ?";
+        String sql = "Select * from Users where Username = ? and Password = ? and AccountType = ?";
         User userA = new User(txt_username.getText(),txt_username.getText(),txt_password.getText(),type.getValue().toString());
         try{
             pst = conn.prepareStatement(sql);
             pst.setString(1, userA.hashUserAccount(userA.getUserName()));
             pst.setString(2, userA.hashUserAccount(userA.getPassword()));
-            pst.setString(3, userA.hashUserAccount(userA.getTypeOfUser()));
+            pst.setString(3, userA.getTypeOfUser());
             rs = pst.executeQuery();
             
            

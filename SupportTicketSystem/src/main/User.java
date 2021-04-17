@@ -42,7 +42,7 @@ public class User {
     if((gate1) && (gate2)){
     this.username = hashUserAccount(this.username);
     this.password = hashUserAccount(this.password);
-    this.typeOfUser = hashUserAccount(this.typeOfUser);
+    //this.typeOfUser = hashUserAccount(this.typeOfUser);
     String selectSQL = "INSERT INTO Users Values(?,?,?,?); ";
     PreparedStatement insert;
 	try {
@@ -51,7 +51,7 @@ public class User {
 	insert.setString(2, this.password);
 	insert.setString(3, this.email);
 	insert.setString(4, this.typeOfUser);
-	insert.executeQuery();
+	insert.executeUpdate();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -114,13 +114,13 @@ public class User {
   }
 
   public boolean IsEmailUsed() throws SQLException{
-    String selectSQL = "SELECT * FROM Users WHERE EMAIL = ?;";
+    String selectSQL = "SELECT * FROM Users WHERE Email = ?;";
     PreparedStatement search = Conn.prepareStatement(selectSQL);
-    search.setString(1, hashUserAccount(this.email));
+    search.setString(1, this.email);
     ResultSet rs = search.executeQuery();
     ArrayList<String> list = new ArrayList<String>();
     while(rs.next()){
-      String name = rs.getString("email");
+      String name = rs.getString("Email");
       list.add(name);
     }
     if(list.isEmpty()){

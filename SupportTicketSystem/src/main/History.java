@@ -1,15 +1,19 @@
+package main;
+
 import java.util.Date;
 import java.sql.*;
 public class History{
-  private java.sql.Date dueDate;
+	private java.sql.Date dueDate;
+	ConnectToDB connection = new ConnectToDB();
+	Connection Conn = connection.getConnect();
 
   public void createHistory(int ticketID, String requesterID, String Description){
     String selectSQL = "Insert into History Values(?,?,?,?);";
     PreparedStatement insert;
     try{
       insert = Conn.prepareStatement(selectSQL);
-      Date date = new java.sql.Date(df.parse(dueDate).gettime());
-      insert.setDate(1,date);
+      dueDate = new java.sql.Date(new Date().getTime());
+      insert.setDate(1,dueDate);
       insert.setInt(2, ticketID);
       insert.setString(3, requesterID);
       insert.setString(4, Description);
