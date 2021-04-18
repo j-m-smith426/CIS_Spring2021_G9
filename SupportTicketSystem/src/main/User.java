@@ -128,14 +128,14 @@ public class User {
       return true;
     }
   }
+  public String getEmail(){
+	return this.email;
+  }
   
   public String getUserName(){
     return username;
   }
   
-  public String getEmail(){
-    return email;
-  }
   public String getPassword(){
     return password;
   }
