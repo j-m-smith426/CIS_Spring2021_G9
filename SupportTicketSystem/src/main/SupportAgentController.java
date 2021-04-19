@@ -52,20 +52,6 @@ public class SupportAgentController implements Initializable {
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
     int index = -1;
 
-    public void updateTable(){
-
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
-        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
-        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
-
-        table.setItems(oblist);
-
-    }
-
     public void Delete(){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
@@ -76,7 +62,7 @@ public class SupportAgentController implements Initializable {
             pst.setString(1, txt_title.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Deleted");
-            updateTable();
+            initialize();
         } catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
@@ -110,7 +96,15 @@ public class SupportAgentController implements Initializable {
             e.printStackTrace();
         }
 
-        updateTable();
+        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+
+        table.setItems(oblist);
 
     }
 
@@ -129,7 +123,7 @@ public class SupportAgentController implements Initializable {
             pst = conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Updated Successfully");
-            updateTable();
+            initialize();
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -159,7 +153,7 @@ public class SupportAgentController implements Initializable {
         try {
             Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
             T1.addTicketToDB();
-            updateTable();
+            initialize();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
