@@ -50,6 +50,7 @@ public class CPanelController implements Initializable {
     PreparedStatement pst = null;
 
     public void HomepaneShow(){
+	updateTable();
         Homepane.setVisible(true);
         Ticketpane.setVisible(false);
     }
