@@ -50,8 +50,6 @@ public class CPanelController implements Initializable {
     private ComboBox category;
     @FXML
     private ComboBox priority;
-    @FXML
-    private Button submitTicket;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -69,20 +67,6 @@ public class CPanelController implements Initializable {
     }
 
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
-	
-     public void updateTable(){
-
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
-        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
-        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
-
-        table.setItems(oblist);
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -113,7 +97,16 @@ public class CPanelController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        updateTable();
+        
+	col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+
+        table.setItems(oblist);
 
     }
 
