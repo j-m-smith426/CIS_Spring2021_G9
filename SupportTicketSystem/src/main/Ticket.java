@@ -29,10 +29,15 @@ public class Ticket {
 		this.description = description;
 		this.priority = priority;
 		try {
+			if(dueDate.matches("\\d{2}-\\d{2}-\\d{4}")){
 			this.dueDate = new java.sql.Date(df.parse(dueDate).getTime());
+			}else{
+			    throw new Exception("Incorrect Due Date Format");
+			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 		this.ticketID = rand.nextInt(10000) + 1;
 		while(this.ticketID == usedTicketID(this.ticketID)){
@@ -44,9 +49,9 @@ public class Ticket {
 	}
 
 
-public void addTicketToDB() throws AlsCustomException{
-  try{
-	if(dueDate.matches("\\d{2}-\\d{2}-\\d{4}"){
+public void addTicketToDB(){
+ 
+	
 	String selectSQL = "INSERT INTO Ticket Values(?,?,?,?,?,?,?);";
 	PreparedStatement insert;
 	
@@ -63,13 +68,8 @@ public void addTicketToDB() throws AlsCustomException{
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	  }
-  }else{
-    throw new AlsCustomException("Incorrect Due Date Format");
-  }
-  }catch(AlsCustomException e){
-    System.out.println("Incorrect Due Date Format");
-  }
+	}
+ 
 }
 
 
