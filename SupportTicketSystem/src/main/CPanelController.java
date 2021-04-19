@@ -58,7 +58,7 @@ public class CPanelController implements Initializable {
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Ticketpane.setVisible(false);
-	updateTable();
+	initialize();
     }
 
     public void TicketpaneShow(){
@@ -117,7 +117,7 @@ public class CPanelController implements Initializable {
         try {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
 			T1.addTicketToDB();
-			updateTable();
+			initialize();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
