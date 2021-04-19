@@ -33,6 +33,12 @@ public class CPanelController implements Initializable {
     @FXML
     private TableColumn<ModelTable, String> col_desc;
     @FXML
+    private TableColumn<ModelTable, String> col_title;
+    @FXML
+    private TableColumn<ModelTable, String> col_category;
+    @FXML
+    private TableColumn<ModelTable, String> col_priority;
+    @FXML
     private TextField txt_title;
     @FXML
     private TextField txt_date;
@@ -50,9 +56,9 @@ public class CPanelController implements Initializable {
     PreparedStatement pst = null;
 
     public void HomepaneShow(){
-	updateTable();
         Homepane.setVisible(true);
         Ticketpane.setVisible(false);
+	updateTable();
     }
 
     public void TicketpaneShow(){
@@ -97,7 +103,7 @@ public class CPanelController implements Initializable {
             }
 
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description")));
+                oblist.add(new ModelTable(rs.getString("id"), rs.getString("requesterID"), rs.getString("date"), rs.getString("description"), rs.getString("title"), rs.getString("category"), rs.getString("priority")));
             }
 
 
