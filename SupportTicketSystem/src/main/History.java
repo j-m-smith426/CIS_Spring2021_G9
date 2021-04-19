@@ -23,7 +23,7 @@ public class History{
     }
   }
   public void retrieveHistory(int ticketID){
-    String selectSQL = "Select * from Tickets WHERE ticketID = ?;";
+    String selectSQL = "Select * from Ticket WHERE ticketID = ?;";
     PreparedStatement insert;
     try{
       insert = Conn.prepareStatement(selectSQL);

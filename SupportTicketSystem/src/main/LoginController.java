@@ -78,8 +78,10 @@ public class LoginController implements Initializable {
            
 
             if(rs.next()){
+            	String email = rs.getString("Email");
+                userA.setEmail(email);
                 JOptionPane.showMessageDialog(null, "Username and password is correct");
-
+                User.setCurrentUser(userA);
                 btn_login.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("CPanel.fxml"));
                 Stage mainStage = new Stage();

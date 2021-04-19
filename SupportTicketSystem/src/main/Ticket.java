@@ -18,9 +18,10 @@ public class Ticket {
 	private java.sql.Date dueDate;
 	ConnectToDB connection = new ConnectToDB();
 	Connection Conn = connection.getConnect();
+	private static Ticket currentTicket;
 	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
-	public Ticket(String requesterID, int ticketID, String title, int category, String description, int priority, String dueDate) throws SQLException {
+	public Ticket(String requesterID, String title, int category, String description, int priority, String dueDate) throws SQLException {
 		super();
 		this.requesterID = requesterID;
 		this.title = title;
@@ -44,7 +45,7 @@ public class Ticket {
 
 
  	public void addTicketToDB(){
-	String selectSQL = "INSERT INTO Tickets Values(?,?,?,?,?,?,?);";
+	String selectSQL = "INSERT INTO Ticket Values(?,?,?,?,?,?,?);";
 	PreparedStatement insert;
 	
 	try{
@@ -56,7 +57,7 @@ public class Ticket {
 		insert.setString(5, this.description);
 		insert.setInt(6, this.priority);
 		insert.setDate(7, this.dueDate);
-		insert.executeQuery();
+		insert.executeUpdate();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

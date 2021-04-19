@@ -39,7 +39,7 @@
       </AnchorPane>
       <AnchorPane fx:id="Ticketpane" layoutY="110.0" prefHeight="290.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="submitTicket" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Submit Ticket" textFill="WHITE">
+            <Button fx:id="submitTicket" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" onAction = "#add_ticket" style="-fx-background-color: red;" text="Submit Ticket" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>

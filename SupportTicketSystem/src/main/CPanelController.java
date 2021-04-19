@@ -93,7 +93,7 @@ public class CPanelController implements Initializable {
     public void add_ticket(ActionEvent event){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
-
+        
      /*   try{
         //add ticket
         }catch (){
