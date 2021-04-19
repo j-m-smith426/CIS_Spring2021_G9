@@ -60,6 +60,20 @@ public class CPanelController implements Initializable {
     }
 
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+	
+     public void updateTable(){
+
+        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+
+        table.setItems(oblist);
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -89,12 +103,7 @@ public class CPanelController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        table.setItems(oblist);
+        updateTable();
 
     }
 
@@ -105,6 +114,7 @@ public class CPanelController implements Initializable {
         try {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
 			T1.addTicketToDB();
+			updateTable();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
