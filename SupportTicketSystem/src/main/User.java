@@ -17,6 +17,7 @@ public class User {
   ConnectToDB connection = new ConnectToDB();
   Connection Conn = connection.getConnect();
   private String key = "Bar12345Bar12345";
+  private static  User currentUser = null; 
 
   public User(String username, String email, String password, String typeOfUser) throws SQLException{
     this.username = username;
@@ -158,4 +159,10 @@ public class User {
   public void setTypeOfUser(String input){
     this.typeOfUser = input;
   }
+public static User getCurrentUser() {
+	return currentUser;
+}
+public static void setCurrentUser(User currentUser) {
+	User.currentUser = currentUser;
+}
 }
