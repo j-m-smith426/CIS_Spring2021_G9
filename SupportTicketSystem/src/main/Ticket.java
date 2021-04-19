@@ -44,7 +44,8 @@ public class Ticket {
 	}
 
 
- 	public void addTicketToDB(){
+public void addTicketToDB() throws AlsCustomException{
+  try{
 	if(dueDate.matches("\\d{2}-\\d{2}-\\d{4}"){
 	String selectSQL = "INSERT INTO Ticket Values(?,?,?,?,?,?,?);";
 	PreparedStatement insert;
@@ -62,9 +63,17 @@ public class Ticket {
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	  }
+  }else{
+    throw new AlsCustomException("Incorrect Due Date Format");
+  }
+  }catch(AlsCustomException e){
+    System.out.println("Incorrect Due Date Format");
+  }
+}
 
- 	}
+
+
 	public int usedTicketID(int ticketID) throws SQLException{
 		String selectSQL = "SELECT * FROM Ticket WHERE TicketID = ?;";
 		PreparedStatement search = Conn.prepareStatement(selectSQL);
