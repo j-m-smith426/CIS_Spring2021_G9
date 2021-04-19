@@ -37,7 +37,7 @@ public class CPanelController implements Initializable {
     @FXML
     private TextField txt_date;
     @FXML
-    private TextField txt_desription;
+    private TextField txt_description;
     @FXML
     private ComboBox category;
     @FXML
@@ -70,11 +70,19 @@ public class CPanelController implements Initializable {
         try {
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
-
-            ResultSet rs = conn.createStatement().executeQuery("select * from data");
+            User userA = User.getCurrentUser();
+            if(userA.getTypeOfUser().matches("Support Agent"))
+            {
+            	rs = conn.createStatement().executeQuery("select * from Ticket");
+            }else {
+            	
+            	PreparedStatement search = conn.prepareStatement("Select * from Ticket Where requesterID = ?");
+            	search.setString(1, userA.getEmail());
+            	rs = search.executeQuery();
+            }
 
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("id"), rs.getString("requesterID"), rs.getString("date"), rs.getString("description")));
+                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description")));
             }
 
 
@@ -93,14 +101,15 @@ public class CPanelController implements Initializable {
     public void add_ticket(ActionEvent event){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
-        
-     /*   try{
-        //add ticket
-        }catch (){
-
-        //SQLException
-        }
-	*/
+        User userA = User.getCurrentUser();
+        try {
+			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
+			T1.addTicketToDB();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
 
 
     }
