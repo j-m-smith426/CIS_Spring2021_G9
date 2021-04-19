@@ -159,6 +159,7 @@ public class SupportAgentController implements Initializable {
         try {
             Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
             T1.addTicketToDB();
+            updateTable();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
