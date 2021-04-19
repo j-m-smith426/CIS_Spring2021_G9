@@ -45,6 +45,7 @@ public class Ticket {
 
 
  	public void addTicketToDB(){
+	if(dueDate.matches("\\d{2}-\\d{2}-\\d{4}"){
 	String selectSQL = "INSERT INTO Ticket Values(?,?,?,?,?,?,?);";
 	PreparedStatement insert;
 	
@@ -81,7 +82,7 @@ public class Ticket {
 			return ticketID;
 	}
 
-
+		}
 	}
 
 	public int getPriority() {
