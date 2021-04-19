@@ -17,7 +17,7 @@ public class History{
       insert.setInt(2, ticketID);
       insert.setString(3, requesterID);
       insert.setString(4, Description);
-      insert.executeQuery();
+      insert.executeUpdate();
     }catch(SQLException e){
       e.printStackTrace();
     }
