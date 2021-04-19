@@ -21,7 +21,7 @@ public class Ticket {
 	private static Ticket currentTicket;
 	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
-	public Ticket(String requesterID, String title, int category, String description, int priority, String dueDate) throws SQLException {
+	public Ticket(String requesterID, String title, int category, String description, int priority, String dueDate) throws Exception {
 		super();
 		this.requesterID = requesterID;
 		this.title = title;
@@ -92,7 +92,7 @@ public void addTicketToDB(){
 	}
 
 		}
-	}
+	
 
 	public int getPriority() {
     		return priority;

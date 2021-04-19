@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 public class CPanelController implements Initializable {
 
     @FXML
@@ -103,7 +105,8 @@ public class CPanelController implements Initializable {
             }
 
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("id"), rs.getString("requesterID"), rs.getString("date"), rs.getString("description"), rs.getString("title"), rs.getString("category"), rs.getString("priority")));
+            	Integer id = rs.getInt(1);
+                oblist.add(new ModelTable(id.toString(), rs.getString("requesterID"), rs.getDate(7).toString(), rs.getString("Description"), rs.getString("Title"), rs.getString("Catagory"), rs.getString("Priority")));
             }
 
 
@@ -125,6 +128,9 @@ public class CPanelController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
 		}
     
 

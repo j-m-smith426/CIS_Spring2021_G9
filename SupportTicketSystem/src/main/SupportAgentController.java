@@ -40,7 +40,7 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TextField txt_date;
     @FXML
-    private TextField txt_desription;
+    private TextField txt_description;
     @FXML
     private ComboBox category;
     @FXML
@@ -121,7 +121,7 @@ public class SupportAgentController implements Initializable {
 
             String value1 = txt_title.getText();
             String value2 = txt_date.getText();
-            String value3 = txt_desription.getText();
+            String value3 = txt_description.getText();
             String value4 = category.getValue().toString();
             String value5 = priority.getValue().toString();
 
@@ -143,7 +143,7 @@ public class SupportAgentController implements Initializable {
         }
         txt_title.setText(col_title.getCellData(index).toString());
         txt_date.setText(col_date.getCellData(index).toString());
-        txt_desription.setText(col_desc.getCellData(index).toString());
+        txt_description.setText(col_desc.getCellData(index).toString());
         category.getValue().toString();
         priority.getValue().toString();
 
@@ -163,7 +163,10 @@ public class SupportAgentController implements Initializable {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        } catch (Exception e) {
+			// TODO Auto-generated catch block
+        	JOptionPane.showMessageDialog(null, e);
+		}
 
 
 
