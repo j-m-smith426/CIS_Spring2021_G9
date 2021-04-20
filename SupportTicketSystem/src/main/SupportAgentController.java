@@ -50,8 +50,6 @@ public class SupportAgentController implements Initializable {
     private ComboBox category;
     @FXML
     private ComboBox priority;
-    @FXML
-    private ComboBox priority2;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -78,6 +76,13 @@ public class SupportAgentController implements Initializable {
             return;
         }
         txt_desription.setText(col_desc.getCellData(index).toString());
+	txt_date.setText(col_date.getCellData(index).toString());
+	txt_title.setText(col_title.getCellData(index).toString());
+	    
+	    
+	col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+	col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
     }
 	
