@@ -29,6 +29,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private AnchorPane Viewpane;
     @FXML
+    private AnchorPane updateHistory;
+    @FXML
     private TableColumn<ModelTable, String> col_id;
     @FXML
     private TableColumn<ModelTable, String> col_Reqid;
@@ -72,12 +74,14 @@ public class SupportAgentController implements Initializable {
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Viewpane.setVisible(false);
+	updateHistory.setVisible(false);
 	updateTable();
     }
 	
     public void ViewpaneShow(){
         Homepane.setVisible(false);
         Viewpane.setVisible(true);
+	updateHistory.setVisible(false);
         getSelected();
     }
 	
