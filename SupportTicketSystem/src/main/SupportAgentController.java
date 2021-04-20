@@ -23,6 +23,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TableView<ModelTable> table;
     @FXML
+    private TableView<ModelTableHistory> historyTable;
+    @FXML
     private AnchorPane Homepane;
     @FXML
     private AnchorPane Viewpane;
