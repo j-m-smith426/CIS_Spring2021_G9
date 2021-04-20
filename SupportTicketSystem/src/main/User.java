@@ -129,6 +129,8 @@ public class User {
       return true;
     }
   }
+
+
   public String getEmail(){
 	return this.email;
   }

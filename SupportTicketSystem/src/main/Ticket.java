@@ -103,6 +103,17 @@ public void addTicketToDB(){
 
 
 	}
+
+
+	 public ReturnSet dbSort(String category) throws SQLException{
+	String selectSQL = "Select * FROM Ticket Where Catagory = ?;";
+	PreparedStatement search = Conn.preparedStatement(selectSQL);
+	search.setString(1,category);
+	ResultSet rs = search.executeQuery();
+	return rs;
+
+
+}
 	
 
 	public String getPriority() {
