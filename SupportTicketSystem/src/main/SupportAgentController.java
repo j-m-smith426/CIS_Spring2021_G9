@@ -218,6 +218,11 @@ public class SupportAgentController implements Initializable {
 
     }
 	
+    public void showSearchTable(){
+	    //search code here
+	    oblist.clear();
+    }
+	
     public void updateTable22(){
 	oblist2.clear();
 	try {
