@@ -59,6 +59,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TextField txt_desription;
     @FXML
+    private TextField txt_updateHistory;
+    @FXML
     private ComboBox category;
     @FXML
     private ComboBox priority;
@@ -223,11 +225,8 @@ public class SupportAgentController implements Initializable {
         User userA = User.getCurrentUser();
 	try {
       
-
-        
-	
-	
-	
+        	History T1History = new History(T1.getTicketID(), T1.getRequesterID());
+		T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
 	
 	}catch (SQLException e){
             e.printStackTrace();
@@ -240,20 +239,22 @@ public class SupportAgentController implements Initializable {
     public void add_ticketSA(ActionEvent event){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
-
         User userA = User.getCurrentUser();
         try {
-        	Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_desription.getText(), priority.getValue().toString(), txt_date.getText());
-            T1.addTicketToDB();
-            updateTable();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (Exception e) {
+        	
+			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
+			T1.addTicketToDB();
+			updateTable();
+			History T1History = new History(T1.getTicketID(), T1.getRequesterID());
+			T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-        	JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
 		}
-
+    
 
 
     }
