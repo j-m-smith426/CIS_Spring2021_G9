@@ -92,6 +92,17 @@ public void addTicketToDB(){
 	}
 
 		}
+
+
+	public static ResultSet searchForTicket(int ticketID){
+		String selectSQL = "Select * FROM Ticket WHERE TicketID = ?;";
+		PreparedStatement search = Conn.prepareStatement(selectSQL);
+		search.setInt(1,ticketID);
+		ResultSet rs = search.executeQuery();
+		return rs;
+
+
+	}
 	
 
 	public int getPriority() {
