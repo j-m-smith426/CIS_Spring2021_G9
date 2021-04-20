@@ -65,6 +65,7 @@ public class SupportAgentController implements Initializable {
     ResultSet rs = null;
     PreparedStatement pst = null;
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+    ObservableList<ModelTableHistory> oblist2 = FXCollections.observableArrayList();
     int index = -1;
 	
     public void HomepaneShow(){
