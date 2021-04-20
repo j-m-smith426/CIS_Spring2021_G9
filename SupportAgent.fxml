@@ -54,6 +54,16 @@
       <TextField fx:id="txt_desription" alignment="TOP_LEFT" layoutX="180.0" layoutY="107.0" prefHeight="42.0" prefWidth="123.0" promptText="Description" />
       <ComboBox fx:id="category" layoutX="307.0" layoutY="107.0" prefHeight="26.0" prefWidth="96.0" promptText="Category" />
       <ComboBox fx:id="priority" layoutX="407.0" layoutY="107.0" prefHeight="26.0" prefWidth="90.0" promptText="Priority" />
-      <AnchorPane fx:id="Viewpane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0" />
+      <AnchorPane fx:id="Viewpane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+         <children>
+            <TextField fx:id="txt_history" layoutX="224.0" layoutY="18.0" prefHeight="194.0" prefWidth="231.0" />
+            <ComboBox fx:id="priority2" layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
+            <Button layoutX="26.0" layoutY="159.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: red;" text="Update History">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
