@@ -47,6 +47,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TextField txt_description;
     @FXML
+    private TextField txt_history;
+    @FXML
     private ComboBox category;
     @FXML
     private ComboBox priority;
@@ -76,7 +78,7 @@ public class SupportAgentController implements Initializable {
         if(index <= -1){
             return;
         }
-        txt_desription.setText(col_desc.getCellData(index).toString());
+        txt_history.setText(col_desc.getCellData(index).toString());
 
     }
 	
