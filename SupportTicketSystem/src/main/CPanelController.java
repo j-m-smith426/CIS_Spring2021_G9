@@ -165,7 +165,18 @@ public class CPanelController implements Initializable {
 			JOptionPane.showMessageDialog(null, e);
 		}
     
-
-
+    }
+	
+    @FXML
+    private void logoutPressed(ActionEvent event) throws Exception{
+	    try{
+		root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+	    } catch(Exception e) {
+		    e.print
+	    }
     }
 }
