@@ -50,6 +50,8 @@ public class SupportAgentController implements Initializable {
     private ComboBox category;
     @FXML
     private ComboBox priority;
+    @FXML
+    private ComboBox priority2;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -66,6 +68,17 @@ public class SupportAgentController implements Initializable {
         Homepane.setVisible(false);
         Viewpane.setVisible(true);
     }
+	
+    @FXML
+    public void getSelected(){
+        index = table.getSelectionModel().getSelectedIndex();
+        if(index <= -1){
+            return;
+        }
+        txt_desription.setText(col_desc.getCellData(index).toString());
+
+    }
+	
 	
     public void updateTable(){
 	    try {
@@ -152,13 +165,9 @@ public class SupportAgentController implements Initializable {
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
 
-            String value1 = txt_title.getText();
-            String value2 = txt_date.getText();
             String value3 = txt_description.getText();
-            String value4 = category.getValue().toString();
-            String value5 = priority.getValue().toString();
 
-            String sql = "update users set title= '"+value1+"',DueDate='"+value2+"',description= '"+value3+"',category='"+value4+"',priority= '"+value5+"' where title='"+value1+"' ";
+            String sql = "update users set description= '"+value3+"' where description='"+value3+"' ";
             pst = conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Updated Successfully");
@@ -166,20 +175,6 @@ public class SupportAgentController implements Initializable {
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }
-
-    @FXML
-    void getSelected(MouseEvent event){
-        index = table.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-            return;
-        }
-        txt_title.setText(col_title.getCellData(index).toString());
-        txt_date.setText(col_date.getCellData(index).toString());
-        txt_description.setText(col_desc.getCellData(index).toString());
-        category.getValue().toString();
-        priority.getValue().toString();
-
     }
 
 
