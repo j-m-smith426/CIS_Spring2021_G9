@@ -11,17 +11,17 @@ public class Ticket {
 	private String requesterID; 
 	private int ticketID;
 	private String title;
-	private int category;
+	private String category;
 	private String description;
-	private int priority;
+	private String priority;
 	private DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 	private java.sql.Date dueDate;
-	ConnectToDB connection = new ConnectToDB();
-	Connection Conn = connection.getConnect();
+	
+	static Connection Conn = ConnectToDB.getConnect();
 	private static Ticket currentTicket;
 	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
-	public Ticket(String requesterID, String title, int category, String description, int priority, String dueDate) throws Exception {
+	public Ticket(String requesterID, String title, String category, String description, String priority, String dueDate) throws Exception {
 		super();
 		this.requesterID = requesterID;
 		this.title = title;
@@ -60,9 +60,9 @@ public void addTicketToDB(){
 		insert.setInt(1, this.ticketID);
 		insert.setString(2, this.title);
 		insert.setString(3, this.requesterID);
-		insert.setInt(4, this.category);
+		insert.setString(4, this.category);
 		insert.setString(5, this.description);
-		insert.setInt(6, this.priority);
+		insert.setString(6, this.priority);
 		insert.setDate(7, this.dueDate);
 		insert.executeUpdate();
 	} catch (SQLException e) {
@@ -94,7 +94,7 @@ public void addTicketToDB(){
 		}
 
 
-	public static ResultSet searchForTicket(int ticketID){
+	public static ResultSet searchForTicket(int ticketID) throws SQLException{
 		String selectSQL = "Select * FROM Ticket WHERE TicketID = ?;";
 		PreparedStatement search = Conn.prepareStatement(selectSQL);
 		search.setInt(1,ticketID);
@@ -105,13 +105,13 @@ public void addTicketToDB(){
 	}
 	
 
-	public int getPriority() {
+	public String getPriority() {
     		return priority;
 		
 	}
-	public void setPriority(int priority) {
+	public void setPriority(String priority) {
 		this.priority = priority;
-    		setHistory(priority);
+    		//setHistory(priority);
 	}
 	public Date getDueDate() {
 		return dueDate;
@@ -128,7 +128,7 @@ public void addTicketToDB(){
 	public String getTitle() {
 		return title;
 	}
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
 	public String getDescription() {

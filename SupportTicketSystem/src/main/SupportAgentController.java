@@ -45,7 +45,7 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TextField txt_date;
     @FXML
-    private TextField txt_description;
+    private TextField txt_desription;
     @FXML
     private ComboBox category;
     @FXML
@@ -166,7 +166,7 @@ public class SupportAgentController implements Initializable {
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
 
-            String value3 = txt_description.getText();
+            String value3 = txt_desription.getText();
 
             String sql = "update users set description= '"+value3+"' where description='"+value3+"' ";
             pst = conn.prepareStatement(sql);
@@ -186,7 +186,7 @@ public class SupportAgentController implements Initializable {
 
         User userA = User.getCurrentUser();
         try {
-            Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
+        	Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_desription.getText(), priority.getValue().toString(), txt_date.getText());
             T1.addTicketToDB();
             updateTable();
         } catch (SQLException e) {

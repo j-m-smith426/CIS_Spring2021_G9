@@ -150,7 +150,8 @@ public class CPanelController implements Initializable {
         Connection conn = connection.getConnect();
         User userA = User.getCurrentUser();
         try {
-			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
+        	
+			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
 		} catch (SQLException e) {
