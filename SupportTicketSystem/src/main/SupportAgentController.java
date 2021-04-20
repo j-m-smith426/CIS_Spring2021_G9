@@ -41,6 +41,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TableColumn<ModelTable, String> col_priority;
     @FXML
+    private TableColumn<ModelTable, String> col_history;
+    @FXML
     private TextField txt_title;
     @FXML
     private TextField txt_date;
@@ -75,7 +77,7 @@ public class SupportAgentController implements Initializable {
         if(index <= -1){
             return;
         }
-        txt_desription.setText(col_desc.getCellData(index).toString());
+        txt_desription.setText(col_history.getCellData(index).toString());
 	txt_date.setText(col_date.getCellData(index).toString());
 	txt_title.setText(col_title.getCellData(index).toString());
 	    
@@ -83,6 +85,7 @@ public class SupportAgentController implements Initializable {
 	col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
 	col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+	col_history.setCellValueFactory(new PropertyValueFactory<>("history"));
 
     }
 	
