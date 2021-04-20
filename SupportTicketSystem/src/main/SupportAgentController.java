@@ -55,6 +55,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TextField txt_title;
     @FXML
+    private TextField txt_search;
+    @FXML
     private TextField txt_date;
     @FXML
     private TextField txt_desription;
