@@ -29,6 +29,8 @@ public class SupportAgentController implements Initializable {
     @FXML
     private AnchorPane Viewpane;
     @FXML
+    private AnchorPane updateHistory;
+    @FXML
     private TableColumn<ModelTable, String> col_id;
     @FXML
     private TableColumn<ModelTable, String> col_Reqid;
@@ -67,18 +69,39 @@ public class SupportAgentController implements Initializable {
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
     ObservableList<ModelTableHistory> oblist2 = FXCollections.observableArrayList();
     int index = -1;
+    int index22 = -1;
 	
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Viewpane.setVisible(false);
+	updateHistory.setVisible(false);
 	updateTable();
     }
 	
     public void ViewpaneShow(){
         Homepane.setVisible(false);
         Viewpane.setVisible(true);
+	updateHistory.setVisible(false);
         getSelected();
     }
+	
+    public void UpdateHistoryShow(){
+        Homepane.setVisible(false);
+        Viewpane.setVisible(false);
+	updateHistory.setVisible(true);
+        getSelected22();
+    }
+	
+	
+    @FXML
+    public void getSelected22(){
+        index22 = table.getSelectionModel().getSelectedIndex();
+        if(index22 <= -1){
+            return;
+        }
+	    
+    }
+	
 	
     @FXML
     public void getSelected(){
