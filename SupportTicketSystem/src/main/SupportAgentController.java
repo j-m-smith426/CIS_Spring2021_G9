@@ -43,13 +43,13 @@ public class SupportAgentController implements Initializable {
     @FXML
     private TableColumn<ModelTable, String> col_priority;
     @FXML
-    private TableColumn<History, String> col_history;
+    private TableColumn<ModelTableHistory, String> col_desc2;
     @FXML
-    private TableColumn<History, String> col_Ticketid2;
+    private TableColumn<ModelTableHistory, String> col_Ticketid2;
     @FXML
-    private TableColumn<History, String> col_Reqid2;
+    private TableColumn<ModelTableHistory, String> col_Agent;
     @FXML
-    private TableColumn<History, String> col_date2;
+    private TableColumn<ModelTableHistory, String> col_date2;
     @FXML
     private TextField txt_title;
     @FXML
@@ -87,9 +87,9 @@ public class SupportAgentController implements Initializable {
         }   
 	    
 	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Reqid2.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
 	col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
-	col_history.setCellValueFactory(new PropertyValueFactory<>("history"));
+	col_desc2.setCellValueFactory(new PropertyValueFactory<>("history"));
 
     }
 	
