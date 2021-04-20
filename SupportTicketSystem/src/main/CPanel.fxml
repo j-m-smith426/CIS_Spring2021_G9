@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CPanelController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CPanelController">
    <children>
       <AnchorPane layoutX="138.0" layoutY="-15.0" prefHeight="100.0" prefWidth="500.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +24,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="Homepane" layoutX="158.0" layoutY="200.0" prefHeight="290.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="Homepane" layoutX="158.0" layoutY="200.0" prefHeight="290.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <TableView fx:id="table" layoutY="5.0" prefHeight="280.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
               <columns>
@@ -39,9 +39,9 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="Ticketpane" layoutY="110.0" prefHeight="290.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="Ticketpane" layoutY="110.0" prefHeight="290.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="submitTicket" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" onAction="#add_ticket" style="-fx-background-color: red;" text="Submit Ticket" textFill="WHITE">
+            <Button layoutX="180.0" layoutY="240.0" mnemonicParsing="false" onAction="#add_ticket" style="-fx-background-color: red;" text="Submit Ticket" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
