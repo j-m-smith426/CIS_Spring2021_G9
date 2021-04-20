@@ -5,8 +5,7 @@ import java.sql.*;
 public class History{
 	private Date today = new Date();
 	private java.sql.Date dueDate;
-	ConnectToDB connection = new ConnectToDB();
-	Connection Conn = connection.getConnect();
+	static Connection Conn = ConnectToDB.getConnect();
 	int ticketID;
 	String requesterID;
 
@@ -35,8 +34,8 @@ public class History{
       e.printStackTrace();
     }
   }
-  public ResultSet retrieveHistory(int ticketID){
-	    String selectSQL = "Select * from Ticket WHERE ticketID = ?;";
+  public static ResultSet retrieveHistory(int ticketID){
+	    String selectSQL = "Select * from History WHERE ticketID = ?;";
 	    PreparedStatement insert;
 	    ResultSet rs = null;
 	    try{
@@ -51,4 +50,3 @@ public class History{
   }
 
  
-}

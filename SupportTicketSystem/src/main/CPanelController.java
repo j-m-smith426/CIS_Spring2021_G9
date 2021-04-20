@@ -85,7 +85,7 @@ public class CPanelController implements Initializable {
             }
 
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("title"), rs.getString("category"), rs.getString("priority")));
+                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("Title"), rs.getString("Catagory"), rs.getString("Priority")));
             }
 
 
@@ -155,8 +155,8 @@ public class CPanelController implements Initializable {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
-			History T1History = new History(T1.ticketID, T1.requesterID);
-			T1History.createHistory(T1.ticketID, T1.requesterID, "Ticket Created");
+			History T1History = new History(T1.getTicketID(), T1.getRequesterID());
+			T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

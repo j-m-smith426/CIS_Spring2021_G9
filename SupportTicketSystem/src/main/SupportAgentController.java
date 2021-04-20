@@ -92,17 +92,13 @@ public class SupportAgentController implements Initializable {
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
         User userA = User.getCurrentUser();
-        if(userA.getTypeOfUser().matches("Support Agent"))
-        {
-            rs = conn.createStatement().executeQuery("select * from Ticket");
-        }else {
-
+        
            
-            rs = 
-        }
+           rs = History.retrieveHistory(Integer.valueOf(oblist.get(index).getId()));
+       
 
         while(rs.next()){
-            oblist2.add(new ModelTableHistory(rs.getString("DueDate"), rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("Description")));
+            oblist2.add(new ModelTableHistory(rs.getString("DateSubmitted"), rs.getString("TicketID"), rs.getString("AgentName"), rs.getString("Description")));
         }
 
 
