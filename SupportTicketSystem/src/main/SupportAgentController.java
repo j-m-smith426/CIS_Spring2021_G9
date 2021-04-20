@@ -62,6 +62,7 @@ public class SupportAgentController implements Initializable {
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Viewpane.setVisible(false);
+	updateTable();
     }
 	
     public void ViewpaneShow(){
