@@ -111,6 +111,13 @@ public class SupportAgentController implements Initializable {
             e.printStackTrace();
         }
 	    
+	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc2.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        historyTable.setItems(oblist2);
+	    
 	//col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
         //col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
 	//col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
