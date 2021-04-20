@@ -82,6 +82,7 @@ public class SupportAgentController implements Initializable {
 	
 	
     public void updateTable(){
+	    oblist.clear();
 	    try {
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
