@@ -63,10 +63,10 @@
             </Button>
             <TableView fx:id="historyTable" layoutX="150.0" prefHeight="195.0" prefWidth="494.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
               <columns>
-                <TableColumn fx:id="col_date2" prefWidth="75.0" text="Due Date" />
-                <TableColumn fx:id="col_Ticketid2" prefWidth="75.0" text="Ticket ID" />
-                  <TableColumn fx:id="col_Reqid2" prefWidth="92.0" text="Requester ID" />
-                  <TableColumn fx:id="col_history" prefWidth="251.0" text="Description" />
+                <TableColumn fx:id="col_date2" prefWidth="94.0" text="Date Submitted" />
+                <TableColumn fx:id="col_Ticketid2" prefWidth="63.0" text="Ticket ID" />
+                  <TableColumn fx:id="col_Agent" prefWidth="85.0" text="Agent Name" />
+                  <TableColumn fx:id="col_desc2" prefWidth="251.0" text="Description" />
               </columns>
             </TableView>
          </children>
