@@ -97,9 +97,8 @@ public class SupportAgentController implements Initializable {
             rs = conn.createStatement().executeQuery("select * from Ticket");
         }else {
 
-            PreparedStatement search = conn.prepareStatement("Select * from Ticket Where requesterID = ?");
-            search.setString(1, userA.getEmail());
-            rs = search.executeQuery();
+           
+            rs = 
         }
 
         while(rs.next()){
@@ -138,7 +137,7 @@ public class SupportAgentController implements Initializable {
             
 
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("title"), rs.getString("category"), rs.getString("priority")));
+                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("Title"), rs.getString("Catagory"), rs.getString("Priority")));
             }
 
 
