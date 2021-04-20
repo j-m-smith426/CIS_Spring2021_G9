@@ -219,12 +219,13 @@ public class SupportAgentController implements Initializable {
 		
 	oblist2.clear();
 	try {
+		
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
         User userA = User.getCurrentUser();
         
            
-        rs = History.retrieveHistory(Integer.valueOf(oblist.get(index).getId()));
+        rs = History.createHistory(Integer.valueOf(oblist.get(index).getId()));
        
 
         while(rs.next()){
@@ -242,39 +243,14 @@ public class SupportAgentController implements Initializable {
         col_desc2.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         historyTable.setItems(oblist2);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-            ConnectToDB connection = new ConnectToDB();
-            Connection conn = connection.getConnect();
 
-            String value3 = txt_desription.getText();
-
-            String sql = "update users set description= '"+value3+"' where description='"+value3+"' ";
-            pst = conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null,"Updated Successfully");
-            updateTable();
+        String value3 = txt_desription.getText();
+        JOptionPane.showMessageDialog(null,"Updated Successfully");
+	    
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
 
 
     public void add_ticketSA(ActionEvent event){
