@@ -218,35 +218,19 @@ public class SupportAgentController implements Initializable {
     public void addNewHistory(){
 		
 	oblist2.clear();
-	try {
-		
-        ConnectToDB connection = new ConnectToDB();
+	ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
         User userA = User.getCurrentUser();
+	try {
+      
+
         
-           
-        rs = History.createHistory(Integer.valueOf(oblist.get(index).getId()));
-       
-
-        while(rs.next()){
-            oblist2.add(new ModelTableHistory(rs.getString("DateSubmitted"), rs.getString("TicketID"), rs.getString("AgentName"), rs.getString("Description")));
-        }
-
-
-        }catch (SQLException e){
+	
+	
+	
+	
+	}catch (SQLException e){
             e.printStackTrace();
-        }
-	    
-	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
-        col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_desc2.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        historyTable.setItems(oblist2);
-
-        String value3 = txt_desription.getText();
-        JOptionPane.showMessageDialog(null,"Updated Successfully");
-	    
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
