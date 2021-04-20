@@ -83,7 +83,12 @@ public class LoginController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Username and password is correct");
                 User.setCurrentUser(userA);
                 btn_login.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("CPanel.fxml"));
+                Parent root;
+                if(userA.getTypeOfUser().matches("Support Agent"))
+                {
+                	 root = FXMLLoader.load(getClass().getResource("SupportAgent.fxml"));
+                }else
+                	root = FXMLLoader.load(getClass().getResource("CPanel.fxml"));
                 Stage mainStage = new Stage();
                 Scene scene = new Scene(root);
                 mainStage.setScene(scene);

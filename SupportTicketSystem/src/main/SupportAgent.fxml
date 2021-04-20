@@ -29,7 +29,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="table" layoutX="3.0" layoutY="154.0" onMouseClicked="#getSelected" prefHeight="246.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
+      <TableView fx:id="table" layoutX="3.0" layoutY="154.0" prefHeight="246.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="60.0" text="Ticket ID" />
           <TableColumn fx:id="col_Reqid" prefWidth="76.0" text="Requester ID" />
