@@ -103,7 +103,7 @@ public class SupportAgentController implements Initializable {
         }
 
         while(rs.next()){
-            oblist2.add(new ModelTableHistory(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description")));
+            oblist2.add(new ModelTableHistory(rs.getString("DueDate"), rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("Description")));
         }
 
 
