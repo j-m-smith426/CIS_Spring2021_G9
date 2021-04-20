@@ -174,7 +174,7 @@ public class CPanelController implements Initializable {
 	try{
                 btn_logout.getScene().getWindow().hide();
                 Parent root;	
-                root = FXMLLoader.load(getClass().getResource("CPanel.fxml"));
+                root = FXMLLoader.load(getClass().getResource("Login.fxml"));
                 Stage mainStage = new Stage();
                 Scene scene = new Scene(root);
                 mainStage.setScene(scene);
