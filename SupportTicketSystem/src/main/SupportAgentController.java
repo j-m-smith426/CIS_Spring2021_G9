@@ -87,10 +87,34 @@ public class SupportAgentController implements Initializable {
             return;
         }   
 	    
-	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
-	col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
-	col_desc2.setCellValueFactory(new PropertyValueFactory<>("history"));
+	oblist2.clear();
+	try {
+        ConnectToDB connection = new ConnectToDB();
+        Connection conn = connection.getConnect();
+        User userA = User.getCurrentUser();
+        if(userA.getTypeOfUser().matches("Support Agent"))
+        {
+            rs = conn.createStatement().executeQuery("select * from Ticket");
+        }else {
+
+            PreparedStatement search = conn.prepareStatement("Select * from Ticket Where requesterID = ?");
+            search.setString(1, userA.getEmail());
+            rs = search.executeQuery();
+        }
+
+        while(rs.next()){
+            oblist2.add(new ModelTableHistory(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description")));
+        }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+	    
+	//col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
+        //col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+	//col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
+	//col_desc2.setCellValueFactory(new PropertyValueFactory<>("history"));
 
     }
 	
