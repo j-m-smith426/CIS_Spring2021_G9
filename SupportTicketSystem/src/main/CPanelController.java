@@ -69,6 +69,7 @@ public class CPanelController implements Initializable {
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 	
     public void updateTable(){
+	    oblist.clear();
 	    try {
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
