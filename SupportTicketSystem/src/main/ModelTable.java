@@ -2,9 +2,9 @@ package main;
 
 public class ModelTable {
 
-    String id,requesterID,date,description,title,category,priority,history;
+    String id,requesterID,date,description,title,category,priority;
 
-    public ModelTable(String id, String requesterID, String date, String description, String title, String category, String priority, String history) {
+    public ModelTable(String id, String requesterID, String date, String description, String title, String category, String priority) {
 
         this.id = id;
         this.requesterID = requesterID;
@@ -13,7 +13,6 @@ public class ModelTable {
         this.title = title;
         this.category = category;
         this.priority = priority;
-        this.history = history;
 
     }
 
@@ -69,11 +68,4 @@ public class ModelTable {
         this.priority = priority;
     }
     
-    public String getHistory() {
-        return history;
-    }
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
 }
