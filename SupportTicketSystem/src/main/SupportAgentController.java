@@ -67,6 +67,7 @@ public class SupportAgentController implements Initializable {
     public void ViewpaneShow(){
         Homepane.setVisible(false);
         Viewpane.setVisible(true);
+        getSelected();
     }
 	
     @FXML
