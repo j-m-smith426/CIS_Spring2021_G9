@@ -8,18 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CPanelController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CPanelController">
    <children>
       <AnchorPane layoutX="138.0" layoutY="-15.0" prefHeight="100.0" prefWidth="500.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="273.0" layoutY="26.0" mnemonicParsing="false" onAction="#TicketpaneShow" style="-fx-background-color: red;" text="Create a Ticket" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+            <Button layoutX="260.5" layoutY="44.0" mnemonicParsing="false" onAction="#TicketpaneShow" style="-fx-background-color: red;" text="Create a Ticket" textFill="WHITE" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Button layoutX="37.0" layoutY="26.0" mnemonicParsing="false" onAction="#HomepaneShow" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: red;" text="Home" textFill="WHITE" AnchorPane.leftAnchor="40.0">
+            <Button layoutX="40.0" layoutY="44.0" mnemonicParsing="false" onAction="#HomepaneShow" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: red;" text="Home" textFill="WHITE" AnchorPane.leftAnchor="40.0">
                <font>
                   <Font size="26.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_logout" layoutX="371.0" layoutY="8.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="28.0" prefWidth="89.0" style="-fx-background-color: pink;" text="Logout">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
                </font>
             </Button>
          </children>
