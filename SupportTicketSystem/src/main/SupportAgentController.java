@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,10 @@ public class SupportAgentController implements Initializable {
 
     @FXML
     private TableView<ModelTable> table;
+    @FXML
+    private AnchorPane Homepane;
+    @FXML
+    private AnchorPane Viewpane;
     @FXML
     private TableColumn<ModelTable, String> col_id;
     @FXML
@@ -51,6 +56,16 @@ public class SupportAgentController implements Initializable {
     PreparedStatement pst = null;
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
     int index = -1;
+	
+    public void HomepaneShow(){
+        Homepane.setVisible(true);
+        Viewpane.setVisible(false);
+    }
+	
+    public void ViewpaneShow(){
+        Homepane.setVisible(false);
+        Viewpane.setVisible(true);
+    }
 	
     public void updateTable(){
 	    try {
