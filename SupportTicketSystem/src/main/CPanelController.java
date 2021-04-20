@@ -58,7 +58,7 @@ public class CPanelController implements Initializable {
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Ticketpane.setVisible(false);
-	initialize();
+	updateTable();
     }
 
     public void TicketpaneShow(){
@@ -67,6 +67,41 @@ public class CPanelController implements Initializable {
     }
 
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+	
+    public void updateTable(){
+	    try {
+            ConnectToDB connection = new ConnectToDB();
+            Connection conn = connection.getConnect();
+            User userA = User.getCurrentUser();
+            if(userA.getTypeOfUser().matches("Support Agent"))
+            {
+                rs = conn.createStatement().executeQuery("select * from Ticket");
+            }else {
+
+                PreparedStatement search = conn.prepareStatement("Select * from Ticket Where requesterID = ?");
+                search.setString(1, userA.getEmail());
+                rs = search.executeQuery();
+            }
+
+            while(rs.next()){
+                oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("title"), rs.getString("category"), rs.getString("priority")));
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+
+        table.setItems(oblist);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -117,7 +152,7 @@ public class CPanelController implements Initializable {
         try {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getVisibleRowCount(), txt_description.getText(), priority.getVisibleRowCount(), txt_date.getText());
 			T1.addTicketToDB();
-			initialize();
+			updateTable();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
