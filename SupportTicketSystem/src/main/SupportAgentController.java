@@ -89,17 +89,6 @@ public class SupportAgentController implements Initializable {
         Homepane.setVisible(false);
         Viewpane.setVisible(false);
 	updateHistory.setVisible(true);
-        getSelected22();
-    }
-	
-	
-    @FXML
-    public void getSelected22(){
-        index22 = table.getSelectionModel().getSelectedIndex();
-        if(index22 <= -1){
-            return;
-        }
-	    
     }
 	
 	
@@ -224,9 +213,53 @@ public class SupportAgentController implements Initializable {
         table.setItems(oblist);
 
     }
-//
-    public void edit(){
-        try{
+
+	
+    public void addNewHistory(){
+		
+	oblist2.clear();
+	try {
+        ConnectToDB connection = new ConnectToDB();
+        Connection conn = connection.getConnect();
+        User userA = User.getCurrentUser();
+        
+           
+        rs = History.retrieveHistory(Integer.valueOf(oblist.get(index).getId()));
+       
+
+        while(rs.next()){
+            oblist2.add(new ModelTableHistory(rs.getString("DateSubmitted"), rs.getString("TicketID"), rs.getString("AgentName"), rs.getString("Description")));
+        }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+	    
+	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc2.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        historyTable.setItems(oblist2);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
             ConnectToDB connection = new ConnectToDB();
             Connection conn = connection.getConnect();
 
