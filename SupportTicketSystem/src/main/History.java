@@ -7,7 +7,7 @@ public class History{
 	ConnectToDB connection = new ConnectToDB();
 	Connection Conn = connection.getConnect();
 
-  public void createHistory(int ticketID, String requesterID, String Description){
+  public void createHistory(int ticketID, String requesterID){
     String selectSQL = "Insert into History Values(?,?,?,?);";
     PreparedStatement insert;
     try{
@@ -16,7 +16,7 @@ public class History{
       insert.setDate(1,dueDate);
       insert.setInt(2, ticketID);
       insert.setString(3, requesterID);
-      insert.setString(4, Description);
+      insert.setString(4, "Ticket Created");
       insert.executeUpdate();
     }catch(SQLException e){
       e.printStackTrace();

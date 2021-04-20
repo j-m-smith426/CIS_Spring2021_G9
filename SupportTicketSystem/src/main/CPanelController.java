@@ -155,6 +155,7 @@ public class CPanelController implements Initializable {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
+			History.createHistory(T1.ticketID, T1.requesterID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
