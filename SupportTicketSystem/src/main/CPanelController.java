@@ -50,6 +50,8 @@ public class CPanelController implements Initializable {
     private ComboBox category;
     @FXML
     private ComboBox priority;
+    @FXML
+    private Button btn_logout;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -169,14 +171,18 @@ public class CPanelController implements Initializable {
 	
     @FXML
     private void logoutPressed(ActionEvent event) throws Exception{
-	    try{
-		root = FXMLLoader.load(getClass().getResource("login.fxml"));
+	try{
+                btn_logout.getScene().getWindow().hide();
+                Parent root;	
+                root = FXMLLoader.load(getClass().getResource("CPanel.fxml"));
                 Stage mainStage = new Stage();
                 Scene scene = new Scene(root);
                 mainStage.setScene(scene);
                 mainStage.show();
-	    } catch(Exception e) {
-		    e.print
-	    }
+		
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
+	
 }
