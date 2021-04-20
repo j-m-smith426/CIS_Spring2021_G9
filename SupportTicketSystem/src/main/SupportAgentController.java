@@ -66,6 +66,8 @@ public class SupportAgentController implements Initializable {
     private ComboBox category;
     @FXML
     private ComboBox priority;
+    @FXML
+    private Button btn_logout;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -291,8 +293,24 @@ public class SupportAgentController implements Initializable {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e);
 		}
-    
-
 
     }
+	
+    @FXML
+    private void logoutPressed(ActionEvent event) throws Exception{
+	try{
+                btn_logout.getScene().getWindow().hide();
+                Parent root;	
+                root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+		
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+	
+	
 }
