@@ -215,18 +215,48 @@ public class SupportAgentController implements Initializable {
         table.setItems(oblist);
 
     }
+	
+    public void updateTable22(){
+	oblist2.clear();
+	try {
+        ConnectToDB connection = new ConnectToDB();
+        Connection conn = connection.getConnect();
+        User userA = User.getCurrentUser();
+        
+           
+           rs = History.retrieveHistory(Integer.valueOf(oblist.get(index).getId()));
+       
+
+        while(rs.next()){
+            oblist2.add(new ModelTableHistory(rs.getString("DateSubmitted"), rs.getString("TicketID"), rs.getString("AgentName"), rs.getString("Description")));
+        }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+	    
+	col_Ticketid2.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_Agent.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+        col_date2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_desc2.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        historyTable.setItems(oblist2);
+	    
+    }
 
 	
     public void addNewHistory(){
 		
-	oblist2.clear();
 	ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
         User userA = User.getCurrentUser();
 	try {
       
-        	History T1History = new History(T1.getTicketID(), T1.getRequesterID());
-		T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
+        	History T1History = new History(T1.getTicketID(), T1.getRequesterID(), txt_updateHistory.getText());
+		T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), txt_updateHistory.getText());
+		
+		updateTable22();
 	
 	}catch (SQLException e){
             e.printStackTrace();
