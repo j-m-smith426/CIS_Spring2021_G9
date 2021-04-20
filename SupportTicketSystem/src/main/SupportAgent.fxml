@@ -34,7 +34,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="Homepane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+      <AnchorPane fx:id="Homepane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
          <children>
             <TableView fx:id="table" onMouseClicked="#getSelected" prefHeight="246.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
               <columns>
@@ -54,15 +54,21 @@
       <TextField fx:id="txt_desription" alignment="TOP_LEFT" layoutX="180.0" layoutY="107.0" prefHeight="42.0" prefWidth="123.0" promptText="Description" />
       <ComboBox fx:id="category" layoutX="307.0" layoutY="107.0" prefHeight="26.0" prefWidth="96.0" promptText="Category" />
       <ComboBox fx:id="priority" layoutX="407.0" layoutY="107.0" prefHeight="26.0" prefWidth="90.0" promptText="Priority" />
-      <AnchorPane fx:id="Viewpane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+      <AnchorPane fx:id="Viewpane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
          <children>
-            <TextField fx:id="txt_history" layoutX="224.0" layoutY="18.0" prefHeight="194.0" prefWidth="231.0" />
-            <ComboBox fx:id="priority2" layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
-            <Button layoutX="26.0" layoutY="159.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: red;" text="Update History">
+            <Button layoutX="159.0" layoutY="199.0" mnemonicParsing="false" onAction="#edit" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: red;" text="Update History">
                <font>
-                  <Font name="Times New Roman" size="23.0" />
+                  <Font name="Times New Roman" size="17.0" />
                </font>
             </Button>
+            <TableView fx:id="historyTable" layoutX="150.0" prefHeight="195.0" prefWidth="494.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Due Date" />
+                <TableColumn prefWidth="75.0" text="Ticket ID" />
+                  <TableColumn prefWidth="92.0" text="Requester ID" />
+                  <TableColumn fx:id="col_history" prefWidth="251.0" text="Description" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
