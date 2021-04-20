@@ -67,6 +67,7 @@ public class SupportAgentController implements Initializable {
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
     ObservableList<ModelTableHistory> oblist2 = FXCollections.observableArrayList();
     int index = -1;
+    int index22 = -1;
 	
     public void HomepaneShow(){
         Homepane.setVisible(true);
@@ -79,6 +80,24 @@ public class SupportAgentController implements Initializable {
         Viewpane.setVisible(true);
         getSelected();
     }
+	
+    public void UpdateHistoryShow(){
+        Homepane.setVisible(false);
+        Viewpane.setVisible(false);
+	updateHistory.setVisible(true);
+        getSelected22();
+    }
+	
+	
+    @FXML
+    public void getSelected22(){
+        index22 = table.getSelectionModel().getSelectedIndex();
+        if(index22 <= -1){
+            return;
+        }
+	    
+    }
+	
 	
     @FXML
     public void getSelected(){
