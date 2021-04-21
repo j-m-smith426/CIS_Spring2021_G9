@@ -27,11 +27,11 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
+    //defines the JavaFX buttons, text fields, anchor panes, etc
     @FXML
     private AnchorPane pane_login;
     @FXML
     private ImageView img = new ImageView();
-  
     @FXML
     private TextField txt_username;
     @FXML
@@ -57,16 +57,21 @@ public class LoginController implements Initializable {
     PreparedStatement pst = null;
 
 
+    //displays the login screen
     public void LoginpaneShow(){
         pane_login.setVisible(true);
         pane_signup.setVisible(false);
     }
 
+	
+    //displays the sign up screen
     public void SignuppaneShow(){
         pane_login.setVisible(false);
         pane_signup.setVisible(true);
     }
 
+	
+    //when the login button is pressed, it authenticates the user and directs them to the correct screen
     @FXML
     private void Login (ActionEvent event) throws Exception{
         
@@ -106,6 +111,8 @@ public class LoginController implements Initializable {
         }
     }
 
+	
+    // adds a new user to the database with the given credentials
     public void add_users(ActionEvent event){
 
 	try {
@@ -121,6 +128,7 @@ public class LoginController implements Initializable {
     }
 
 
+    //sets the comboboxes with the given values
     @Override
     public void initialize(URL url, ResourceBundle rb){
         type_up.getItems().addAll("User","Support Agent");
