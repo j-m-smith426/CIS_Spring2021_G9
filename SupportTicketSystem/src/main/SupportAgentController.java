@@ -262,8 +262,8 @@ public class SupportAgentController implements Initializable {
         User userA = User.getCurrentUser();
 	try {
       
-        	History T1History = new History(T1.getTicketID(), T1.getRequesterID(), txt_updateHistory.getText());
-		T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), txt_updateHistory.getText());
+        	History T1History = new History(Integer.parseInt(oblist.get(index).getId()), User.getCurrentUser().getEmail());
+		T1History.createHistory(Integer.parseInt(oblist.get(index).getId()), User.getCurrentUser().getEmail(), txt_updateHistory.getText());
 		
 		updateTable22();
 		JOptionPane.showMessageDialog(null, "New History Submitted");
