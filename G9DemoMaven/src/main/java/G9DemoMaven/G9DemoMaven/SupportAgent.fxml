@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SupportAgentController">
+   <children>
+      <AnchorPane layoutY="14.0" prefHeight="108.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="30.0" layoutY="33.0" mnemonicParsing="false" onAction="#add_ticketSA" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: green;" text="Add" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+            <Button layoutX="183.0" layoutY="58.0" mnemonicParsing="false" onAction="#ViewpaneShow" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: yellow;" text="View">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+            <Button layoutX="337.0" layoutY="58.0" mnemonicParsing="false" onAction="#Delete" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: red;" text="Delete" AnchorPane.rightAnchor="28.0">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+            <Button layoutX="183.0" layoutY="8.0" mnemonicParsing="false" onAction="#HomepaneShow" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Home">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_logout" layoutX="337.0" layoutY="8.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: pink;" text="Logout">
+               <font>
+                  <Font name="Times New Roman" size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Homepane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+         <children>
+            <TableView fx:id="table" onMouseClicked="#getSelected" prefHeight="195.0" prefWidth="494.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
+              <columns>
+                <TableColumn fx:id="col_id" prefWidth="60.0" text="Ticket ID" />
+                <TableColumn fx:id="col_Reqid" prefWidth="76.0" text="Requester ID" />
+                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="60.0" text="Due Date" />
+                  <TableColumn fx:id="col_desc" prefWidth="104.0" text="Description" />
+                  <TableColumn fx:id="col_title" prefWidth="65.0" text="Title" />
+                  <TableColumn fx:id="col_category" prefWidth="77.0" text="category" />
+                  <TableColumn fx:id="col_priority" prefWidth="51.0" text="priority" />
+              </columns>
+            </TableView>
+            <TextField fx:id="txt_search" layoutX="136.0" layoutY="209.0" />
+            <Button layoutX="302.0" layoutY="209.0" mnemonicParsing="false" onAction="#showSearchTable" text="Search">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txt_title" layoutX="5.0" layoutY="107.0" prefHeight="26.0" prefWidth="83.0" promptText="Title" />
+      <TextField fx:id="txt_date" layoutX="92.0" layoutY="107.0" prefHeight="26.0" prefWidth="83.0" promptText="Due Date" />
+      <TextField fx:id="txt_desription" alignment="TOP_LEFT" layoutX="180.0" layoutY="107.0" prefHeight="42.0" prefWidth="123.0" promptText="Description" />
+      <ComboBox fx:id="category" layoutX="307.0" layoutY="107.0" prefHeight="26.0" prefWidth="96.0" promptText="Category" />
+      <ComboBox fx:id="priority" layoutX="407.0" layoutY="107.0" prefHeight="26.0" prefWidth="90.0" promptText="Priority" />
+      <AnchorPane fx:id="Viewpane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+         <children>
+            <Button layoutX="159.0" layoutY="199.0" mnemonicParsing="false" onAction="#UpdateHistoryShow" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: red;" text="Update History">
+               <font>
+                  <Font name="Times New Roman" size="17.0" />
+               </font>
+            </Button>
+            <TableView fx:id="historyTable" layoutX="150.0" prefHeight="195.0" prefWidth="494.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+              <columns>
+                <TableColumn fx:id="col_date2" prefWidth="94.0" text="Date Submitted" />
+                <TableColumn fx:id="col_Ticketid2" prefWidth="63.0" text="Ticket ID" />
+                  <TableColumn fx:id="col_Agent" prefWidth="85.0" text="Agent Name" />
+                  <TableColumn fx:id="col_desc2" prefWidth="251.0" text="Description" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="updateHistory" layoutX="150.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+         <children>
+            <TextField fx:id="txt_updateHistory" alignment="TOP_LEFT" layoutX="80.0" layoutY="14.0" prefHeight="171.0" prefWidth="340.0" promptText="Description" />
+            <Button layoutX="180.0" layoutY="198.0" mnemonicParsing="false" onAction="#addNewHistory" style="-fx-background-color: red;" text="Submit Update">
+               <font>
+                  <Font name="Times New Roman" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
