@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class SupportAgentController implements Initializable {
 
+	
+    //defines the JavaFX buttons, text fields, anchor panes, etc
     @FXML
     private TableView<ModelTable> table;
     @FXML
@@ -81,6 +83,7 @@ public class SupportAgentController implements Initializable {
     int index = -1;
     int index22 = -1;
 	
+    //displays the home screen
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Viewpane.setVisible(false);
@@ -88,6 +91,7 @@ public class SupportAgentController implements Initializable {
 	updateTable();
     }
 	
+    //displays the history for a slected ticket when the view button is clicked
     public void ViewpaneShow(){
         Homepane.setVisible(false);
         Viewpane.setVisible(true);
@@ -95,6 +99,8 @@ public class SupportAgentController implements Initializable {
         getSelected();
     }
 	
+	
+    //displays the update history screen when the update history button is clicked on the view history page
     public void UpdateHistoryShow(){
         Homepane.setVisible(false);
         Viewpane.setVisible(false);
@@ -102,6 +108,8 @@ public class SupportAgentController implements Initializable {
     }
 	
 	
+	
+    //gets the history from the selected ticket and displays it in the table found on the view history page
     @FXML
     public void getSelected(){
         index = table.getSelectionModel().getSelectedIndex();
@@ -143,6 +151,7 @@ public class SupportAgentController implements Initializable {
     }
 	
 	
+    //updates the table on the homepage when a new ticket is created or deleted by a support agent
     public void updateTable(){
 	    oblist.clear();
 	    try {
@@ -175,6 +184,7 @@ public class SupportAgentController implements Initializable {
     }
 	
 
+    //deletes the sected ticket and history from the table, also deletes from the ticket plus history from the database
     public void Delete(){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
@@ -200,6 +210,8 @@ public class SupportAgentController implements Initializable {
         }
     }
 
+	
+    //sets the combo boxes with given values and displays the ticket data in the home table
     @Override
     public void initialize(URL url, ResourceBundle rb){
         category.getItems().addAll("Student","Professor","G9 Member");
@@ -233,6 +245,8 @@ public class SupportAgentController implements Initializable {
 
     }
 	
+	
+    //displays the ticket data when the search button is clicked
     public void showSearchTable() throws SQLException{
 	    //search code here
 	    oblist.clear();
@@ -252,6 +266,8 @@ public class SupportAgentController implements Initializable {
 	    
     }
 	
+	
+    //updates the history table when a support agent submits an updated history for a ticket
     public void updateTable22(){
 	oblist2.clear();
 	try {
@@ -282,6 +298,8 @@ public class SupportAgentController implements Initializable {
     }
 
 	
+	
+    //adds the new history to the database for the given ticket and displays the table with the new history included
     public void addNewHistory(){
 		
 	ConnectToDB connection = new ConnectToDB();
@@ -302,6 +320,7 @@ public class SupportAgentController implements Initializable {
     }
 
 
+    //creates a new ticket plus history on the support agent page, adds ticket plus history to the database and updates the table with the new ticket
     public void add_ticketSA(ActionEvent event){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
@@ -325,6 +344,8 @@ public class SupportAgentController implements Initializable {
 
     }
 	
+	
+    //logs the current support agent out and displays the login screen
     @FXML
     private void logoutPressed(ActionEvent event) throws Exception{
 	try{
