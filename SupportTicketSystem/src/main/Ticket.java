@@ -105,9 +105,9 @@ public void addTicketToDB(){
 	}
 
 
-	 public ReturnSet dbSort(String category) throws SQLException{
+	 public static ResultSet dbSort(String category) throws SQLException{
 	String selectSQL = "Select * FROM Ticket Where Catagory = ?;";
-	PreparedStatement search = Conn.preparedStatement(selectSQL);
+	PreparedStatement search = Conn.prepareStatement(selectSQL);
 	search.setString(1,category);
 	ResultSet rs = search.executeQuery();
 	return rs;

@@ -4,10 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -157,8 +160,6 @@ public class CPanelController implements Initializable {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
-			JOptionPane.showMessageDialog(null, "Ticket Created");
-			HomepaneShow();
 			History T1History = new History(T1.getTicketID(), T1.getRequesterID());
 			T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
 		} catch (SQLException e) {
@@ -173,14 +174,15 @@ public class CPanelController implements Initializable {
 	
     @FXML
     private void logoutPressed(ActionEvent event) throws Exception{
-	try{
+    	 Parent root;
+    	try{
                 btn_logout.getScene().getWindow().hide();
-                Parent root;	
+               	
                 root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-                Stage mainStage = new Stage();
+                Stage mainStage2 = new Stage();
                 Scene scene = new Scene(root);
-                mainStage.setScene(scene);
-                mainStage.show();
+                mainStage2.setScene(scene);
+                mainStage2.show();
 		
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
