@@ -160,6 +160,8 @@ public class CPanelController implements Initializable {
 			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
+			JOptionPane.showMessageDialog(null, "Ticket Created");
+			HomepaneShow();
 			History T1History = new History(T1.getTicketID(), T1.getRequesterID());
 			T1History.createHistory(T1.getTicketID(), T1.getRequesterID(), "Ticket Created");
 		} catch (SQLException e) {
