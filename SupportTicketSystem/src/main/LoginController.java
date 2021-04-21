@@ -107,6 +107,8 @@ public class LoginController implements Initializable {
 	try {
 		User user = new User(txt_username_up.getText(), email_up.getText(), txt_password_up.getText(), type_up.getValue().toString());
 		user.addUserToDB();
+		JOptionPane.showMessageDialog(null, "Account created, Please Login.");
+		LoginpaneShow();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
