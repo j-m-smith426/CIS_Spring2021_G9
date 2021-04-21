@@ -178,13 +178,22 @@ public class SupportAgentController implements Initializable {
     public void Delete(){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
-
-        String sql = "delete from users where requesterID = ?";
+        String sql = "delete from History where TicketID = ?";
         try{
             pst = conn.prepareStatement(sql);
-            pst.setString(1, txt_title.getText());
+            pst.setString(1, oblist.get(index).getId());
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Deleted");
+            JOptionPane.showMessageDialog(null,"History Deleted");
+            updateTable();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        sql = "delete from Ticket where TicketID = ?";
+        try{
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, oblist.get(index).getId());
+            pst.execute();
+            JOptionPane.showMessageDialog(null,"Ticket Deleted");
             updateTable();
         } catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
@@ -287,9 +296,7 @@ public class SupportAgentController implements Initializable {
 		JOptionPane.showMessageDialog(null, "New History Submitted");
 		ViewpaneShow();
 	
-	}catch (SQLException e){
-            e.printStackTrace();
-        } catch (Exception e){
+	}catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
