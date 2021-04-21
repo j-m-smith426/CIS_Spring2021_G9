@@ -4,10 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -220,9 +224,23 @@ public class SupportAgentController implements Initializable {
 
     }
 	
-    public void showSearchTable(){
+    public void showSearchTable() throws SQLException{
 	    //search code here
 	    oblist.clear();
+	    rs = Ticket.dbSort(txt_search.getText());
+	    while(rs.next()){
+            oblist.add(new ModelTable(rs.getString("TicketID"), rs.getString("requesterID"), rs.getString("DueDate"), rs.getString("Description"), rs.getString("Title"), rs.getString("Catagory"), rs.getString("Priority")));
+        }
+
+    col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+    col_Reqid.setCellValueFactory(new PropertyValueFactory<>("requesterID"));
+    col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+    col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+    col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+    col_category.setCellValueFactory(new PropertyValueFactory<>("category"));
+    col_priority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+
+	    
     }
 	
     public void updateTable22(){
@@ -283,7 +301,7 @@ public class SupportAgentController implements Initializable {
         User userA = User.getCurrentUser();
         try {
         	
-			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_description.getText(), priority.getValue().toString(), txt_date.getText());
+			Ticket T1 = new Ticket(userA.getEmail(), txt_title.getText(), category.getValue().toString(), txt_desription.getText(), priority.getValue().toString(), txt_date.getText());
 			T1.addTicketToDB();
 			updateTable();
 			JOptionPane.showMessageDialog(null, "Ticket Created");
