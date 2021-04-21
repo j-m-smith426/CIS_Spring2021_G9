@@ -1,3 +1,7 @@
+Create Database SupportTicketDB
+GO;
+
+
 use SupportTicketDB
 
 Create Table Users(
