@@ -23,6 +23,8 @@ import javax.swing.JOptionPane;
 
 public class CPanelController implements Initializable {
 
+    
+    //define all the FX buttons, text boxes, etc
     @FXML
     private AnchorPane Homepane;
     @FXML
@@ -60,19 +62,25 @@ public class CPanelController implements Initializable {
     ResultSet rs = null;
     PreparedStatement pst = null;
 
+    
+    //shows the home view
     public void HomepaneShow(){
         Homepane.setVisible(true);
         Ticketpane.setVisible(false);
 	updateTable();
     }
 
+    //shows the ticket view
     public void TicketpaneShow(){
         Homepane.setVisible(false);
         Ticketpane.setVisible(true);
     }
 
+    //defines the array list used to show the tickets in the table
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 	
+	
+    //updates the table on the home page with the new ticket created
     public void updateTable(){
 	    oblist.clear();
 	    try {
@@ -109,6 +117,8 @@ public class CPanelController implements Initializable {
         table.setItems(oblist);
     }
 
+	
+    //sets the combo boxes with its values, adds data to the table if available
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
@@ -151,6 +161,8 @@ public class CPanelController implements Initializable {
 
     }
 
+	
+    //creates a ticket when the submit ticket button is pressed, also creates history for the ticket
     public void add_ticket(ActionEvent event){
         ConnectToDB connection = new ConnectToDB();
         Connection conn = connection.getConnect();
@@ -174,6 +186,8 @@ public class CPanelController implements Initializable {
     
     }
 	
+	
+    //logs the current user out and displays the login page
     @FXML
     private void logoutPressed(ActionEvent event) throws Exception{
     	 Parent root;
