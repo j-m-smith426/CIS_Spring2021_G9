@@ -1,4 +1,5 @@
 Support Ticket System
+
 This Project lets the user create an account such as, User and Support Agent, 
 to submit or respond to tickets to help a costumer fix their hardware/software problems
 
