@@ -8,7 +8,7 @@ public class History{
 	static Connection Conn = ConnectToDB.getConnect();
 	int ticketID;
 	String requesterID;
-
+// Creates a Simple History Object
   public History(int ticketID, String requesterID){
 	dueDate = new java.sql.Date(today.getTime());
 	this.ticketID = ticketID;
@@ -18,7 +18,7 @@ public class History{
 
 
   }
-
+//Creates a History Ticket inside the MySQL Database
   public void createHistory(int ticketID, String requesterID, String Description){
     String selectSQL = "Insert into History Values(?,?,?,?);";
     PreparedStatement insert;
@@ -34,6 +34,7 @@ public class History{
       e.printStackTrace();
     }
   }
+//Function that returns a Set of History Tickets that match the ticketID of a Ticket
   public static ResultSet retrieveHistory(int ticketID){
 	    String selectSQL = "Select * from History WHERE ticketID = ?;";
 	    PreparedStatement insert;

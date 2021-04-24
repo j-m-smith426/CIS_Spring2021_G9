@@ -21,6 +21,8 @@ public class Ticket {
 	private static Ticket currentTicket;
 	private ArrayList<Integer> history = new ArrayList<Integer>();
 	private Random rand = new Random();
+
+// Constructor that Creates a Ticket Object with a random unique ticketID from 1-10000
 	public Ticket(String requesterID, String title, String category, String description, String priority, String dueDate) throws Exception {
 		super();
 		this.requesterID = requesterID;
@@ -48,7 +50,7 @@ public class Ticket {
 
 	}
 
-
+// this adds the Ticket Object to the MySQL Database
 public void addTicketToDB(){
  
 	
@@ -73,7 +75,7 @@ public void addTicketToDB(){
 }
 
 
-
+// Checks to see if a ticketID is in the MySQL database, if it is then it it returns it, if not it returns 0
 	public int usedTicketID(int ticketID) throws SQLException{
 		String selectSQL = "SELECT * FROM Ticket WHERE TicketID = ?;";
 		PreparedStatement search = Conn.prepareStatement(selectSQL);
@@ -93,7 +95,7 @@ public void addTicketToDB(){
 
 		}
 
-
+//this returns a set of entrys in the SQL Database where TicketID equals the number passed to it
 	public static ResultSet searchForTicket(int ticketID) throws SQLException{
 		String selectSQL = "Select * FROM Ticket WHERE TicketID = ?;";
 		PreparedStatement search = Conn.prepareStatement(selectSQL);
@@ -104,7 +106,7 @@ public void addTicketToDB(){
 
 	}
 
-
+//This sorts the Database by Category but could be changed to anything
 	 public static ResultSet dbSort(String category) throws SQLException{
 	String selectSQL = "Select * FROM Ticket Where Catagory = ?;";
 	PreparedStatement search = Conn.prepareStatement(selectSQL);
