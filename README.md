@@ -14,3 +14,4 @@ TODO: Code Examples
 To Install: 
 you can download the Maven file and compile that into a .Jar file 
 or you can just download the .Jar provided in the Project but you must have Java and JavaFX installed
+Addtionally, for the program to actually create and add Tickets you must have a MySQL Setup that follows the specifications in "434Table_Setup"
